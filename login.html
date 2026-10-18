@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход — Timefall
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Unbounded:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #050505;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Тот же фон, что и в твоём CSS */
+        .glass-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(circle at 20% 30%, #0a0f0a, #000000);
+        }
+
+        .glass-bg::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" opacity="0.1"><path fill="none" stroke="%2322ff88" stroke-width="0.8" d="M0 400 L800 400 M400 0 L400 800 M200 200 L600 600 M200 600 L600 200"/><circle cx="400" cy="400" r="100" stroke="%2322ff88" fill="none"/></svg>');
+            background-repeat: repeat;
+            background-size: 80px;
+            animation: slowMove 40s linear infinite;
+        }
+
+        @keyframes slowMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 200px 200px; }
+        }
+
+        .auth-container {
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 32px;
+            border: 1px solid rgba(34, 255, 136, 0.3);
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 450px;
+            margin: 2rem;
+            animation: fadeSlideUp 0.5s ease-out;
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #47eb41, #199151);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo p {
+            color: #888;
+            margin-top: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #ccc;
+            font-weight: 500;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(34, 255, 136, 0.3);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #22ff88;
+            box-shadow: 0 0 8px rgba(34, 255, 136, 0.3);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-group input {
+            width: auto;
+            width: 18px;
+            height: 18px;
+        }
+
+        .checkbox-group label {
+            margin-bottom: 0;
+            cursor: pointer;
+        }
+
+        .btn-green {
+            width: 100%;
+            background: #22ff88;
+            border: none;
+            color: #000;
+            font-weight: bold;
+            padding: 14px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: 0.2s;
+        }
+
+        .btn-green:hover {
+            background: #00cc66;
+            transform: scale(1.02);
+            box-shadow: 0 0 12px #22ff88;
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #888;
+        }
+
+        .auth-footer a {
+            color: #22ff88;
+            text-decoration: none;
+        }
+
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            background: rgba(255, 50, 50, 0.2);
+            border: 1px solid #ff4444;
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 1rem;
+            color: #ff8888;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-bg"></div>
+    
+    <div class="auth-container">
+        <div class="logo">
+            <h1>Timefall</h1>
+            <p>Войдите в свой аккаунт</p>
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label><i class="fas fa-user"></i> Email или ник Minecraft</label>
+                <input type="text" id="login" placeholder="example@mail.com или NikName" required>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-lock"></i> Пароль</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="remember" checked>
+                <label for="remember">Запомнить меня</label>
+            </div>
+
+            <button type="submit" class="btn-green">Войти</button>
+        </form>
+
+        <div class="auth-footer">
+            Нет аккаунта? <a href="register.html">Зарегистрироваться</a><br>
+            <a href="forgot-password.html" style="font-size: 0.9rem;">Забыли пароль?</a>
+        </div>
+        <div class="auth-footer">
+            <a href="https://discord.gg/eTc57RuKKd">Discord</a>
+        </div>
+    </div>
+
+    <script>
+        // Проверяем, не залогинен ли уже пользователь
+        async function checkAuth() {
+            try {
+                const response = await fetch('/api/check-auth.php');
+                const data = await response.json();
+                if (data.authenticated) {
+                    window.location.href = '/index.html';
+                }
+            } catch(e) {
+                console.error('Ошибка проверки авторизации', e);
+            }
+        }
+        checkAuth();
+
+        const form = document.getElementById('loginForm');
+        const errorDiv = document.getElementById('errorMessage');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorDiv.classList.remove('show');
+            
+            const login = document.getElementById('login').value;
+            const password = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+
+            try {
+                const response = await fetch('/api/login.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({ login, password, remember })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    window.location.href = '/index.html';
+                } else {
+                    errorDiv.textContent = data.error || 'Ошибка входа';
+                    errorDiv.classList.add('show');
+                }
+            } catch(err) {
+                errorDiv.textContent = 'Ошибка соединения с сервером';
+                errorDiv.classList.add('show');
+            }
+        });
+    </script>
+</body>
+</html>

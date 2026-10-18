@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация — Timefall</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Unbounded:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Те же стили, что и в login.html, можно скопировать полностью */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #050505; color: #fff; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .glass-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; background: radial-gradient(circle at 20% 30%, #0a0f0a, #000000); }
+        .glass-bg::after { content: ""; position: absolute; width: 100%; height: 100%; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" opacity="0.1"><path fill="none" stroke="%2322ff88" stroke-width="0.8" d="M0 400 L800 400 M400 0 L400 800 M200 200 L600 600 M200 600 L600 200"/><circle cx="400" cy="400" r="100" stroke="%2322ff88" fill="none"/></svg>'); background-repeat: repeat; background-size: 80px; animation: slowMove 40s linear infinite; }
+        @keyframes slowMove { 0% { background-position: 0 0; } 100% { background-position: 200px 200px; } }
+        .auth-container { background: rgba(10, 10, 10, 0.7); backdrop-filter: blur(20px); border-radius: 32px; border: 1px solid rgba(34, 255, 136, 0.3); padding: 2.5rem; width: 100%; max-width: 450px; margin: 2rem; animation: fadeSlideUp 0.5s ease-out; }
+        @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .logo { text-align: center; margin-bottom: 2rem; }
+        .logo h1 { font-size: 2.5rem; background: linear-gradient(135deg, #47eb41, #199151); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .logo p { color: #888; margin-top: 0.5rem; }
+        .form-group { margin-bottom: 1.5rem; }
+        label { display: block; margin-bottom: 0.5rem; color: #ccc; font-weight: 500; }
+        input { width: 100%; padding: 12px 16px; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(34, 255, 136, 0.3); border-radius: 12px; color: #fff; font-size: 1rem; font-family: inherit; transition: all 0.2s; }
+        input:focus { outline: none; border-color: #22ff88; box-shadow: 0 0 8px rgba(34, 255, 136, 0.3); }
+        .btn-green { width: 100%; background: #22ff88; border: none; color: #000; font-weight: bold; padding: 14px; border-radius: 40px; cursor: pointer; font-size: 1rem; font-family: inherit; transition: 0.2s; }
+        .btn-green:hover { background: #00cc66; transform: scale(1.02); box-shadow: 0 0 12px #22ff88; }
+        .auth-footer { text-align: center; margin-top: 1.5rem; color: #888; }
+        .auth-footer a { color: #22ff88; text-decoration: none; }
+        .auth-footer a:hover { text-decoration: underline; }
+        .error-message { background: rgba(255, 50, 50, 0.2); border: 1px solid #ff4444; border-radius: 12px; padding: 12px; margin-bottom: 1rem; color: #ff8888; font-size: 0.9rem; display: none; }
+        .error-message.show { display: block; }
+        .success-message { background: rgba(34, 255, 136, 0.2); border: 1px solid #22ff88; border-radius: 12px; padding: 12px; margin-bottom: 1rem; color: #22ff88; font-size: 0.9rem; display: none; }
+        .success-message.show { display: block; }
+    </style>
+</head>
+<body>
+    <div class="glass-bg"></div>
+    
+    <div class="auth-container">
+        <div class="logo">
+            <h1>Timefall</h1>
+            <p>Создайте новый аккаунт</p>
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
+        <div class="success-message" id="successMessage"></div>
+
+        <form id="registerForm">
+            <div class="form-group">
+                <label><i class="fas fa-gamepad"></i> Ник в Minecraft</label>
+                <input type="text" id="minecraft_nick" placeholder="Ваш игровой ник" required>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-envelope"></i> Email</label>
+                <input type="email" id="email" placeholder="example@mail.com" required>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-lock"></i> Пароль</label>
+                <input type="password" id="password" placeholder="Минимум 6 символов" required>
+            </div>
+
+            <button type="submit" class="btn-green">Зарегистрироваться</button>
+        </form>
+
+        <div class="auth-footer">
+            Уже есть аккаунт? <a href="login.html">Войти</a>
+        </div>
+        
+        <div class="auth-footer">
+            <a href="https://discord.gg/eTc57RuKKd">Discord</a>
+        </div>
+    </div>
+
+    <script>
+        // Проверяем, не залогинен ли уже
+        async function checkAuth() {
+            try {
+                const response = await fetch('/api/check-auth.php');
+                const data = await response.json();
+                if (data.authenticated) {
+                    window.location.href = '/index.html';
+                }
+            } catch(e) {}
+        }
+        checkAuth();
+    
+        const form = document.getElementById('registerForm');
+        const errorDiv = document.getElementById('errorMessage');
+        const successDiv = document.getElementById('successMessage');
+    
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorDiv.classList.remove('show');
+            successDiv.classList.remove('show');
+            
+            const minecraft_nick = document.getElementById('minecraft_nick').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+    
+            try {
+                const response = await fetch('/api/register.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({ minecraft_nick, email, password })
+                });
+    
+                const data = await response.json();
+    
+                if (data.success) {
+                    if (data.require_verification) {
+                        // Показываем сообщение о необходимости подтвердить почту
+                        successDiv.textContent = data.message;
+                        successDiv.classList.add('show');
+                        form.style.display = 'none'; // Скрываем форму
+                    } else {
+                        // Обычная регистрация без верификации
+                        successDiv.textContent = 'Регистрация успешна! Перенаправление...';
+                        successDiv.classList.add('show');
+                        setTimeout(() => {
+                            window.location.href = '/index.html';
+                        }, 1500);
+                    }
+                } else {
+                    errorDiv.textContent = data.error || 'Ошибка регистрации';
+                    errorDiv.classList.add('show');
+                }
+            } catch(err) {
+                errorDiv.textContent = 'Ошибка соединения с сервером';
+                errorDiv.classList.add('show');
+            }
+        });
+    </script>
+</body>
+</html>

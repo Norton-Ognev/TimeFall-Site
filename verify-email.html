@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подтверждение email — Timefall</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Unbounded:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #050505; color: #fff; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .glass-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; background: radial-gradient(circle at 20% 30%, #0a0f0a, #000000); }
+        .glass-bg::after { content: ""; position: absolute; width: 100%; height: 100%; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" opacity="0.1"><path fill="none" stroke="%2322ff88" stroke-width="0.8" d="M0 400 L800 400 M400 0 L400 800 M200 200 L600 600 M200 600 L600 200"/><circle cx="400" cy="400" r="100" stroke="%2322ff88" fill="none"/></svg>'); background-repeat: repeat; background-size: 80px; animation: slowMove 40s linear infinite; }
+        @keyframes slowMove { 0% { background-position: 0 0; } 100% { background-position: 200px 200px; } }
+        .auth-container { background: rgba(10, 10, 10, 0.7); backdrop-filter: blur(20px); border-radius: 32px; border: 1px solid rgba(34, 255, 136, 0.3); padding: 2.5rem; width: 100%; max-width: 450px; margin: 2rem; text-align: center; animation: fadeSlideUp 0.5s ease-out; }
+        @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .logo h1 { font-size: 2.5rem; background: linear-gradient(135deg, #47eb41, #199151); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 1.5rem; }
+        .icon { font-size: 4rem; margin-bottom: 1rem; }
+        .success { color: #22ff88; }
+        .error { color: #ff4444; }
+        .message { font-size: 1.2rem; margin-bottom: 1.5rem; }
+        .btn-green { display: inline-block; background: #22ff88; border: none; color: #000; font-weight: bold; padding: 14px 30px; border-radius: 40px; cursor: pointer; font-size: 1rem; text-decoration: none; font-family: inherit; transition: 0.2s; }
+        .btn-green:hover { background: #00cc66; transform: scale(1.02); box-shadow: 0 0 12px #22ff88; }
+    </style>
+</head>
+<body>
+    <div class="glass-bg"></div>
+    
+    <div class="auth-container">
+        <div class="logo">
+            <h1>Timefall</h1>
+        </div>
+        
+        <div id="content">
+            <div class="icon" id="icon"></div>
+            <div class="message" id="message"></div>
+            <a href="/login.html" class="btn-green">Перейти ко входу</a>
+        </div>
+    </div>
+
+    <script>
+        // Получаем статус из URL
+        const params = new URLSearchParams(window.location.search);
+        const status = params.get('status');
+        const errorMessage = params.get('message') || '';
+        const icon = document.getElementById('icon');
+        const message = document.getElementById('message');
+
+        if (status === 'success') {
+            icon.innerHTML = '✅';
+            icon.className = 'icon success';
+            message.textContent = 'Email успешно подтверждён! Теперь вы можете войти в свой аккаунт.';
+            message.className = 'message success';
+        } else if (status === 'error') {
+            icon.innerHTML = '❌';
+            icon.className = 'icon error';
+            message.textContent = errorMessage || 'Ошибка подтверждения. Возможно, ссылка недействительна или уже использована.';
+            message.className = 'message error';
+        } else {
+            // Если параметров нет — пробуем подтвердить
+            const token = params.get('token');
+            if (token) {
+                // Отправляем запрос на подтверждение
+                fetch('/api/verify-email.php?token=' + token)
+                    .then(() => {
+                        // Редирект сделает сервер, но на всякий случай
+                        icon.innerHTML = '✅';
+                        icon.className = 'icon success';
+                        message.textContent = 'Email успешно подтверждён! Теперь вы можете войти.';
+                        message.className = 'message success';
+                    })
+                    .catch(() => {
+                        icon.innerHTML = '❌';
+                        icon.className = 'icon error';
+                        message.textContent = 'Ошибка подтверждения. Попробуйте позже.';
+                        message.className = 'message error';
+                    });
+            } else {
+                icon.innerHTML = '📧';
+                icon.className = 'icon';
+                message.textContent = 'Проверьте вашу почту для подтверждения email.';
+                message.className = 'message';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<script>
+    
+    // ============================================
+    // Копирование IP-адреса сервера
+    // ============================================
+    async function copyIP(event) {
+      const ip = document.getElementById('serverIp').innerText;
+      const btn = event.target.closest('.copy-btn');
+      const originalHTML = btn.innerHTML;
+      
+      if (navigator.clipboard && window.isSecureContext) {
+        try {
+          await navigator.clipboard.writeText(ip);
+          showCopySuccess(btn, originalHTML);
+          return;
+        } catch (err) {
+          console.log('Clipboard API failed, falling back');
+        }
+      }
+      
+      // Фолбэк для HTTP
+      const textarea = document.createElement('textarea');
+      textarea.value = ip;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      
+      try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+          showCopySuccess(btn, originalHTML);
+        } else {
+          alert('Не удалось скопировать');
+        }
+      } catch (err) {
+        alert('Не удалось скопировать текст');
+      }
+      
+      document.body.removeChild(textarea);
+    }
+    
+    function showCopySuccess(btn, originalHTML) {
+      btn.innerHTML = '<i class="fas fa-check"></i> Скопировано!';
+      setTimeout(() => {
+        btn.innerHTML = originalHTML;
+      }, 2000);
+    }
+    // Добавьте в ваш HTML или основной JS файл
+    document.addEventListener('DOMContentLoaded', function() {
+  // Создаем кнопку бургер-меню
+  const menuToggle = document.createElement('button');
+  menuToggle.className = 'menu-toggle';
+  menuToggle.innerHTML = '☰';
+  document.body.appendChild(menuToggle);
+  
+  // Создаем оверлей для меню
+  const overlay = document.createElement('div');
+  overlay.className = 'sidebar-overlay';
+  document.body.appendChild(overlay);
+  
+  const sidebar = document.querySelector('.sidebar');
+  
+  // Открытие/закрытие меню
+  menuToggle.addEventListener('click', function() {
+    sidebar.classList.toggle('mobile-open');
+    overlay.classList.toggle('active');
+    menuToggle.innerHTML = sidebar.classList.contains('mobile-open') ? '✕' : '☰';
+  });
+  
+  // Закрытие меню при клике на оверлей
+  overlay.addEventListener('click', function() {
+    sidebar.classList.remove('mobile-open');
+    overlay.classList.remove('active');
+    menuToggle.innerHTML = '☰';
+  });
+  
+  // Закрытие меню при клике на пункт меню
+  const navItems = document.querySelectorAll('.nav-item');
+  navItems.forEach(item => {
+    item.addEventListener('click', function() {
+      if (window.innerWidth <= 768) {
+        sidebar.classList.remove('mobile-open');
+        overlay.classList.remove('active');
+        menuToggle.innerHTML = '☰';
+      }
+    });
+  });
+  
+  // Автоматическое закрытие меню при изменении размера окна
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+      sidebar.classList.remove('mobile-open');
+      overlay.classList.remove('active');
+      menuToggle.innerHTML = '☰';
+    }
+  });
+});
+</script>
+
+<script>
+// ============================================
+// Проверка авторизации и обновление интерфейса
+// ============================================
+async function checkAuthAndUpdateUI() {
+  try {
+    const response = await fetch('/api/check-auth.php', {
+      credentials: 'include'
+    });
+    const data = await response.json();
+    
+    if (data.authenticated) {
+      showPrivateElements();
+      console.log('Привет, ' + data.user.minecraft_nick);
+    } else {
+      showGuestElements();
+    }
+
+    window.__isAuthenticated = data.authenticated;
+    window.__userData = data.user || null;
+    
+  } catch(e) {
+    console.error('Ошибка проверки авторизации', e);
+    showGuestElements();
+    window.__isAuthenticated = false;
+    window.__userData = null;
+  }
+}
+
+function showPrivateElements() {
+  document.querySelectorAll('.nav-private').forEach(el => el.style.display = '');
+  document.querySelectorAll('.nav-guest').forEach(el => el.style.display = 'none');
+}
+
+function showGuestElements() {
+  document.querySelectorAll('.nav-private').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.nav-guest').forEach(el => el.style.display = '');
+}
+
+function logout() {
+  fetch('/api/logout.php', { method: 'POST', credentials: 'include' })
+    .then(() => window.location.href = '/login.html')
+    .catch(() => window.location.href = '/login.html');
+}
+
+// Запускаем при загрузке
+checkAuthAndUpdateUI();
+</script>
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timefall | Приватный Лицензионный Minecraft сервер</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Unbounded:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+<div class="glass-bg"></div>
+<div class="app-layout">
+  <!-- Левая навигация -->
+  <div class="sidebar">
+    <div class="logo-area">
+      <h2>TimeFall</h2>
+      <p>Vanilla+ сервер</p>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="pages/home.html" class="nav-item" data-page="home"><i class="fas fa-home"></i><span>Главная</span></a>
+      <a href="pages/wiki.html" class="nav-item" data-page="wiki"><i class="fas fa-book-open"></i><span>Wiki</span></a>
+      <a href="pages/pass.html" class="nav-item" data-page="pass"><i class="fas fa-ticket-alt"></i><span>Проходка / Подписка</span></a>
+      <a href="pages/organizations.html" class="nav-item" data-page="organizations"><i class="fas fa-flag"></i><span>Организации</span></a>
+      <a href="pages/members.html" class="nav-item" data-page="members"><i class="fas fa-users"></i><span>Участники</span></a>
+      <a href="pages/rules.html" class="nav-item" data-page="rules"><i class="fas fa-book"></i><span>Правила</span></a>
+    </div>
+    
+    <div class="profile-divider"></div>
+    
+    <!-- Личный кабинет — для гостей -->
+    <div class="profile-menu-item nav-guest">
+      <a href="#" class="nav-item" onclick="window.top.location.href='/login.html'; return false;">
+        <i class="fas fa-user-circle"></i><span>Личный кабинет</span>
+      </a>
+    </div>
+    
+    <!-- Личный кабинет — для авторизованных -->
+    <div class="profile-menu-item nav-private" style="display:none;">
+      <a href="pages/profile1.html" class="nav-item" data-page="profile1">
+        <i class="fas fa-user-circle"></i><span>Личный кабинет</span>
+      </a>
+    </div>
+
+    <!-- ==========================================
+         НИЖНИЙ БЛОК — прижат к низу сайдбара
+         ========================================== -->
+    <div class="bottom-actions">
+      <!-- Discord -->
+      <button class="btn-discord nav-both"
+              onclick="window.open('https://discord.gg/eTc57RuKKd', '_blank')">
+        <i class="fab fa-discord"></i> Discord
+      </button>
+      
+      <!-- Войти (гость) -->
+      <a href="#" class="btn-green nav-guest"
+         onclick="window.top.location.href='/login.html'; return false;">
+        <i class="fas fa-sign-in-alt"></i> Войти
+      </a>
+      
+      <!-- Выйти (авторизован) -->
+      <button class="btn-logout nav-private" style="display:none;"
+              onclick="logout()">
+        <i class="fas fa-sign-out-alt"></i> Выйти
+      </button>
+
+      <!-- Информация о сервере -->
+      <div class="server-info">
+        <div class="ip-container">
+          <span class="ip-address" id="serverIp">timefall.wellduck.org</span>
+          <button class="copy-btn" onclick="copyIP(event)"><i class="fas fa-copy"></i></button>
+        </div>
+        <div class="online-status">
+          <span class="online-dot"></span>
+          <span>30+ игроков онлайн</span>
+        </div>
+        <div class="links-row">
+            <a href="../dogovor_oferta.pdf" target="_blank">Оферта</a>
+            <a href="../contact.pdf" target="_blank">Контакты</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <iframe src="pages/home.html" id="pageFrame" frameborder="0"></iframe>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>
