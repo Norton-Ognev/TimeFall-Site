@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Участники | Timefall</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Unbounded:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* ===== Пузырьковая сетка ===== */
+        .member-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0 1.5rem;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        /* Базовый пузырь */
+        .member-card {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 40px;
+            padding: 0.8rem 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(34, 255, 136, 0.27);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+            cursor: default;
+            white-space: nowrap;
+            min-width: fit-content;
+        }
+
+        .member-card:hover {
+            transform: translateY(-2px);
+            border-color: #22ff88;
+        }
+
+        /* Админский пузырь */
+        .member-card.admin-card {
+            cursor: pointer;
+            user-select: none;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0.7rem 1.4rem;
+            gap: 0;
+            white-space: normal;
+            border-radius: 30px;
+            transition: all 0.45s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+        }
+
+        /* Заголовок пузыря (виден всегда) */
+        .admin-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            pointer-events: none; /* клики проходят сквозь заголовок к карточке */
+        }
+
+        .admin-card-header i {
+            font-size: 1.1rem;
+            color: #22ff88;
+            flex-shrink: 0;
+        }
+
+        .admin-card-header strong {
+            font-size: 0.95rem;
+            color: #fff;
+            white-space: nowrap;
+        }
+
+        .admin-card-header .admin-role {
+            color: #aaa;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        /* Тело пузыря — скрыто, не занимает места */
+        .admin-card-body {
+            max-height: 0;
+            max-width: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.45s ease, max-width 0.45s ease, opacity 0.3s ease, margin 0.45s ease, padding 0.45s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0;
+            padding: 0;
+            pointer-events: none; /* клики по телу тоже проходят к карточке */
+        }
+
+        /* Развёрнутый пузырь */
+        .member-card.admin-card.expanded {
+            border-radius: 30px;
+            padding: 1.2rem 1.8rem;
+            transform: scale(1.0);
+            border-color: #22ff88;
+            box-shadow: 0 0 24px rgba(34, 255, 136, 0.2);
+            z-index: 2;
+        }
+
+        .member-card.admin-card.expanded .admin-card-body {
+            max-height: 300px;
+            max-width: 320px;
+            opacity: 1;
+            margin-top: 0.8rem;
+            padding-top: 0;
+            pointer-events: auto; /* в раскрытом виде можно взаимодействовать с содержимым */
+        }
+
+        .admin-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(34, 255, 136, 0.5);
+            flex-shrink: 0;
+        }
+
+        .admin-details {
+            color: #ccc;
+            line-height: 1.5;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .admin-details .admin-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #22ff88;
+            margin-bottom: 0.2rem;
+        }
+
+        .admin-details .admin-role-badge {
+            display: inline-block;
+            background: rgba(34, 255, 136, 0.15);
+            color: #22ff88;
+            padding: 3px 12px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-details p {
+            margin-bottom: 0.3rem;
+            font-size: 0.82rem;
+        }
+
+        .admin-details p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Контентмейкер — обычный пузырь-ссылка */
+        .member-link {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Убираем дефолтный hover для admin-card (у него свой эффект) */
+        .member-card.admin-card:hover {
+            transform: none;
+        }
+
+        .member-card.admin-card.expanded:hover {
+            transform: scale(1.02);
+        }
+
+        /* Адаптив */
+        @media (max-width: 600px) {
+            .member-grid {
+                justify-content: center;
+            }
+
+            .member-card.admin-card.expanded {
+                padding: 1rem 1.2rem;
+            }
+
+            .member-card.admin-card.expanded .admin-card-body {
+                max-width: 260px;
+                max-height: 350px;
+            }
+
+            .admin-card-header .admin-role {
+                display: none;
+            }
+
+            .admin-photo {
+                width: 65px;
+                height: 65px;
+            }
+
+            .admin-details {
+                font-size: 0.8rem;
+            }
+        }
+                /* ===== ПОДПИСЧИКИ TIME+ ===== */
+        .subscriber-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .subscriber-days {
+            background: rgba(255, 170, 68, 0.2);
+            color: #ffaa44;
+            padding: 2px 10px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .subscribers-loading {
+            color: #aaa;
+        }
+
+        .subscribers-error {
+            color: #ff6b6b;
+        }
+
+        .subscribers-empty {
+            color: #aaa;
+        }
+
+    /* Адаптив */
+    @media (max-width: 600px) {
+        .member-grid {
+            justify-content: center;
+        }
+
+        .member-card.admin-card.expanded {
+            padding: 1rem 1.2rem;
+        }
+
+        .member-card.admin-card.expanded .admin-card-body {
+            max-width: 260px;
+            max-height: 350px;
+        }
+
+        .admin-card-header .admin-role {
+            display: none;
+        }
+
+        .admin-photo {
+            width: 65px;
+            height: 65px;
+        }
+
+        .admin-details {
+            font-size: 0.8rem;
+        }
+
+        .subscriber-days {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+        }
+    }
+    </style>
+</head>
+<body style="background: transparent; overflow-y: auto; padding: 0;">
+    <div class="page-content">
+        <div class="glass-card">
+            <h1><i class="fas fa-users"></i> Наше сообщество</h1>
+            <p style="margin-bottom: 2rem;">Познакомьтесь с командой и активными участниками сервера!</p>
+            
+            <!-- Администрация -->
+            <div style="margin-bottom: 2.5rem;">
+                <h2><i class="fas fa-user-shield"></i> Администрация</h2>
+                <p class="plugin-hint"><i class="fas fa-hand-pointer"></i> Нажмите на карточку, чтобы развернуть подробную информацию</p>
+                <div class="member-grid">
+                    
+                    <!-- Norton_Ognev -->
+                    <div class="member-card admin-card" onclick="toggleAdmin(this)">
+                        <div class="admin-card-header">
+                            <i class="fas fa-users-cog"></i>
+                            <strong>Norton_Ognev</strong>
+                            <span class="admin-role">&nbsp;· Социальный глава проекта</span>
+                        </div>
+                        <div class="admin-card-body">
+                            <img src="../img/members/norton_ognev.png" alt="Norton_Ognev" class="admin-photo" onerror="this.style.display='none'">
+                            <div class="admin-details">
+                                <div class="admin-name">Norton_Ognev</div>
+                                <span class="admin-role-badge">Социальный администратор, Web-разработчик</span>
+                                <p>Отвечает за социльных админов. Медийное лицо сервера. Создаёт и поддерживает сайт проекта и бота Discord.</p>
+                                <p><i class="fas fa-heart" style="color:#22ff88;"></i> Почти чистый код, тёмные темы, камера.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ice_Ivan_Rus -->
+                    <div class="member-card admin-card" onclick="toggleAdmin(this)">
+                        <div class="admin-card-header">
+                            <i class="fas fa-tools"></i>
+                            <strong>Ice_Ivan_Rus</strong>
+                            <span class="admin-role">&nbsp;· Технический глава проекта</span>
+                        </div>
+                        <div class="admin-card-body">
+                            <img src="../img/members/ice_ivan_rus.png" alt="Ice_Ivan_Rus" class="admin-photo" onerror="this.style.display='none'">
+                            <div class="admin-details">
+                                <div class="admin-name">Ice_Ivan_Rus</div>
+                                <span class="admin-role-badge">Технический администратор</span>
+                                <p>Отвечает за серверную инфраструктуру, настройку плагинов и техподдержку.</p>
+                                <p><i class="fas fa-heart" style="color:#22ff88;"></i> Увольнение, оптимизация, чёрный чай.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- DANEOS08 -->
+                    <div class="member-card admin-card" onclick="toggleAdmin(this)">
+                        <div class="admin-card-header">
+                            <i class="fas fa-gavel"></i>
+                            <strong>DANEOS08</strong>
+                            <span class="admin-role">&nbsp;· Соц. админ</span>
+                        </div>
+                        <div class="admin-card-body">
+                            <img src="../img/members/daneos.png" alt="DANEOS08" class="admin-photo" onerror="this.style.display='none'">
+                            <div class="admin-details">
+                                <div class="admin-name">DANEOS08</div>
+                                <span class="admin-role-badge">Социальный администратор, Писатель сюжета</span>
+                                <p>Следит за порядком и учиняет беспорядки, разрешает споры и помогает игрокам, создатель сюжета проекта.</p>
+                                <p><i class="fas fa-heart" style="color:#22ff88;"></i> Порядок, наблюдение, перо и чернила.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- S1ddEria -->
+                    <div class="member-card admin-card" onclick="toggleAdmin(this)">
+                        <div class="admin-card-header">
+                            <i class="fas fa-feather-pointed"></i>
+                            <strong>S1ddEria</strong>
+                            <span class="admin-role">&nbsp;· Сценарист</span>
+                        </div>
+                        <div class="admin-card-body">
+                            <img src="../img/members/S1ddEria.png" alt="S1ddEria" class="admin-photo" onerror="this.style.display='none'">
+                            <div class="admin-details">
+                                <div class="admin-name">S1ddEria</div>
+                                <span class="admin-role-badge">Сценарист</span>
+                                <p>Там, где админы видят «просто идею», сценарист видит историю, механику и сюжет — и записывает это раньше, чем кто-то успеет передумать.</p>
+                                <p><i class="fas fa-heart" style="color:#22ff88;"></i> Лор, геймплей, перо и чернила.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Xleb_Normal -->
+                    <div class="member-card admin-card" onclick="toggleAdmin(this)">
+                        <div class="admin-card-header">
+                            <i class="fas fa-palette"></i>
+                            <strong>Xleb_Normal</strong>
+                            <span class="admin-role">&nbsp;· 2D/3D-художник</span>
+                        </div>
+                        <div class="admin-card-body">
+                            <img src="../img/members/Xleb_Normal.png" alt="Xleb_Normal" class="admin-photo" onerror="this.style.display='none'">
+                            <div class="admin-details">
+                                <div class="admin-name">S1ddEria</div>
+                                <span class="admin-role-badge">Пиксельных дел мастер</span>
+                                <p>Текстуры, модельки, визуал — превращает «надо бы покрасивше» в готовый стиль проекта.</p>
+                                <p><i class="fas fa-heart" style="color:#22ff88;"></i> Пиксели, сборки, модели.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Lynxxx_x -->
+                    <div class="member-card admin-card" onclick="toggleAdmin(this)">
+                        <div class="admin-card-header">
+                            <i class="fas fa-user-secret"></i>
+                            <strong>Lynxxx_x</strong>
+                            <span class="admin-role">&nbsp;· Не Windows</span>
+                        </div>
+                        <div class="admin-card-body">
+                            <img src="../img/members/Lynxxx_x.png" alt="Lynxxx_x" class="admin-photo" onerror="this.style.display='none'">
+                            <div class="admin-details">
+                                <div class="admin-name">Lynxxx_x</div>
+                                <span class="admin-role-badge">Хелпер</span>
+                                <p>Загадочная личность сервера. Никто не знает, чем он занимается, но без него — никак.</p>
+                                <p><i class="fas fa-heart" style="color:#22ff88;"></i> Тайны, деньги, сюжет.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Контентмейкеры -->
+            <div style="margin-bottom: 2.5rem;">
+                <h2><i class="fas fa-video"></i> Контентмейкеры</h2>
+                <div class="member-grid">
+                    <a href="https://www.youtube.com/@nortonogn/featured" class="member-card" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+                        <i class="fab fa-youtube" style="color:#ff0000;"></i>
+                        <strong>Norton</strong>
+                        <span style="color:#aaa;">(560)</span>
+                    </a>
+                    <a href="https://www.twitch.tv/headywinner1880" class="member-card" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+                        <i class="fab fa-twitch" style="color:#9146ff;"></i>
+                        <strong>Headywinner1880</strong>
+                        <span style="color:#aaa;">Twitch</span>
+                    </a>
+                    <a href="https://www.twitch.tv/kot_fami" class="member-card" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+                        <i class="fab fa-twitch" style="color:#9146ff;"></i>
+                        <strong>Kot_Fami</strong>
+                        <span style="color:#aaa;">Twitch</span>
+                    </a>
+                    <a href="https://www.twitch.tv/chiphear" class="member-card" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+                        <i class="fab fa-twitch" style="color:#9146ff;"></i>
+                        <strong>chiphear</strong>
+                        <span style="color:#aaa;">Twitch</span>
+                    </a>
+                </div>
+            </div>
+            <!-- Подписчики Time+ -->
+            <div style="margin-bottom: 2rem;">
+                <h2><i class="fas fa-gem"></i> Подписчики Time +</h2>
+                <div class="member-grid" id="subscribers-grid">
+                    <div class="member-card subscribers-loading">
+                        <i class="fas fa-spinner fa-pulse"></i> Загрузка...
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // ===== Аккордеон администрации =====
+        function toggleAdmin(clickedCard) {
+            const allAdminCards = document.querySelectorAll('.member-card.admin-card');
+            allAdminCards.forEach(card => {
+                if (card === clickedCard) {
+                    card.classList.toggle('expanded');
+                } else {
+                    card.classList.remove('expanded');
+                }
+            });
+        }
+
+        // ===== Загрузка подписчиков Time+ =====
+        async function loadSubscribers() {
+            const grid = document.getElementById('subscribers-grid');
+
+            try {
+                const response = await fetch('../api/subscribers.php');
+                if (!response.ok) throw new Error('HTTP ' + response.status);
+
+                const subscribers = await response.json();
+
+                if (subscribers.error) {
+                    throw new Error(subscribers.error);
+                }
+
+                // Нет подписчиков
+                if (!Array.isArray(subscribers) || subscribers.length === 0) {
+                    grid.innerHTML = `
+                        <div class="member-card subscribers-empty">
+                            <i class="fas fa-gem"></i> Пока нет активных подписчиков
+                        </div>`;
+                    return;
+                }
+
+                // Рендерим пузырьки
+                grid.innerHTML = subscribers.map(sub => `
+                    <div class="member-card">
+                        <div class="subscriber-badge">
+                            <i class="fas fa-crown" style="color:#ffaa44;"></i>
+                            <strong>${escapeHTML(sub.minecraft_nick)}</strong>
+                        </div>
+                        <span class="subscriber-days">${sub.subscription_days} дн.</span>
+                    </div>
+                `).join('');
+
+            } catch (err) {
+                console.error('Ошибка загрузки подписчиков:', err);
+                grid.innerHTML = `
+                    <div class="member-card subscribers-error">
+                        <i class="fas fa-exclamation-triangle"></i> Не удалось загрузить список
+                    </div>`;
+            }
+        }
+
+        // Защита от XSS
+        function escapeHTML(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        // Запускаем при загрузке страницы
+        loadSubscribers();
+    </script>
+</body>
+</html>

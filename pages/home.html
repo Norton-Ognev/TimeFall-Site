@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная | Timefall</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Unbounded:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body style="background: transparent; overflow-y: auto; padding: 0;">
+    <div class="page-content">
+        <!-- Приветственный блок -->
+        <div class="glass-card hero-banner" style="background-image: url('../img/home/jungle.avif');">
+          <div class="hero-banner-overlay"></div>
+        
+          <div class="hero-banner-content">
+            <h1><i class="fas fa-dragon"></i> Добро пожаловать на Timefall</h1>
+            <p>Уникальный Vanilla+ сервер с кастомными плагинами, сюжетной аркой и миром, который меняется от ваших решений.</p>
+        
+            <div class="hero-info-row">
+              <div class="hero-info-item">
+                <i class="fas fa-check-circle" style="color:#22ff88;"></i> Версия 1.21.11
+              </div>
+              <div class="hero-info-item">
+                <i class="fas fa-globe"></i> IP: timefall.wellduck.org
+              </div>
+              <div class="hero-info-item">
+                <i class="fas fa-users"></i> Онлайн: 30+ игроков
+              </div>
+            </div>
+        
+            <div class="hero-btn-wrapper">
+              <button class="btn-green btn-buy" onclick="buyPass()">
+                <i class="fas fa-shopping-cart"></i> Приобрести проходку
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card">
+            <h2>Обязательно присоединяйтесь к нашему Discord серверу!</h2>
+            <p style="margin: 1rem 0 1.5rem;">Именно на нём проходят все активности и благодаря ему выдаётся доступ на сервер.</p>
+            <img src="../img/home/banner_ds.avif" alt="Босс #1" class="hero-image">
+            <div style="text-align: center;">
+                <button class="btn-buy" onclick="window.open('https://discord.gg/eTc57RuKKd', '_blank')" style="background: rgba(63, 77, 235, 0.589); border: 1px solid rgba(255, 255, 255, 0.158); color: #fafbff; font-weight: normal; padding: 12px 28px; border-radius: 40px; cursor: pointer; font-family: inherit; transition: 0.2s; font-size: 1rem; min-height: 50px; min-width: 50px;" onmouseover="this.style.background='rgba(88, 101, 242, 0.6)'; this.style.color='#fafbff';" onmouseout="this.style.background='rgba(63, 77, 235, 0.589)'; this.style.color='#fafbff';">
+                <i class="fab fa-discord"></i> Наш Discord сервер
+                </button>
+            </div>
+        </div>
+        <!--<div class="glass-card timer-card">
+            <p>До открытия сервера:</p>
+            <span id="timer-days" class="timer-number">00</span> D :
+            <span id="timer-hours" class="timer-number">00</span> H :
+            <span id="timer-minutes" class="timer-number">00</span> M :
+            <span id="timer-seconds" class="timer-number">00</span> S
+        </div>-->
+        
+        <div class="glass-card">
+            <h2>Этот мир скрывает большое количество тайн</h2>
+            <p style="margin: 1rem 0 1.5rem;">Мы не дадим тебе заскучать: каждую неделю вас ждёт не только ивенты от игроков, но и развитие сюжета.</p>
+            <p style="margin: 1rem 0 1.5rem;">Ищи что-то не из этого мира, разгадывай тайны и стань частью чего-то большего...</p>
+            <img src="../img/home/house.avif" alt="Босс #1" class="hero-image">
+        </div>
+        
+        <div class="glass-card">
+            <h2>Не только о выживании, но и о креативе</h2>
+            <p style="margin: 1rem 0 1.5rem;">Помни: твоя постройка может получить необычные способности и улучшить твою личную историю или идею, а может и вовсе стать толчком для сюжета всего сезона!</p>
+            <img src="../img/home/magic.avif" alt="Магия" class="hero-image hero-image-tall">
+            <p style="margin: 1rem 0 1.5rem;">Мы дадим силу твоим идеям внутри игры.</p>
+        </div>
+        
+        <div class="glass-card">
+            <h2>Vanilla+</h2>
+            <p style="margin: 1rem 0 1.5rem;">Мы доработали и изменили ряд игровых механик, чтобы сделать геймплей интереснее: в чём-то игру усложнили, а в чём-то, наоборот, облегчили.</p>
+            <p style="margin: 0.5rem 0 1.5rem;">Подробнее в разделе Wiki.</p>
+            <img src="../img/home/cave.avif" alt="Босс #1" class="hero-image">
+        </div>
+        
+        <div class="glass-card">
+            <h2>Ламповая атмосфера</h2>
+            <p style="margin: 1rem 0 1.5rem;">Помнишь то чувство, когда после приключений ты просто сидишь у костра с друзьями и болтаешь обо всём на свете? Именно ради таких моментов мы и собираемся вместе каждый вечер</p>
+            <p style="margin: 1rem 0 1.5rem;">Мы строим не просто дома, мы строим общую историю. Глобальные постройки, голосовой чат без токсичности и совместные вечера на ивентах и простых посиделках — здесь ты найдёшь ту самую ламповую атмосферу, где каждый становится своим.</p>
+            <img src="../img/home/commun.png" alt="Сообщество" class="hero-image-last">
+        </div>
+    </div>
+    <!--<script>
+        // Установите вашу целевую дату (год, месяц (0-11), день, час, минута, секунда)
+        const targetDate = new Date(2026, 4, 30, 12, 59, 59); // 31 декабря 2025, 23:59:59
+        
+        function updateCountdown() {
+            const now = new Date();
+            const diff = targetDate - now;
+            
+            if (diff <= 0) {
+                document.getElementById('timer-days').textContent = '00';
+                document.getElementById('timer-hours').textContent = '00';
+                document.getElementById('timer-minutes').textContent = '00';
+                document.getElementById('timer-seconds').textContent = '00';
+                return;
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('timer-days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('timer-hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('timer-minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('timer-seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        function buyPass() {
+            window.location.href = 'pass.html';
+        }
+    </script>-->
+    <script>
+        function buyPass() {
+            window.location.href = 'pass.html';
+        }
+    </script>
+</body>
+</html>

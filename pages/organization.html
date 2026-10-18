@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Организация | Timefall</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* === НОВЫЙ ДИЗАЙН ОРГАНИЗАЦИИ === */
+        .org-layout {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        /* левая колонка */
+        .org-left {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .org-banner-large {
+            height: 340px;         /* почти на всю высоту экрана пользователя */
+            width: auto;
+            max-width: 200px;
+            border-radius: 12px;
+            object-fit: contain;
+            border: 1px solid rgba(34,255,136,0.3);
+            image-rendering: pixelated;
+            background: #1a1a1a;
+        }
+
+        .org-join-btn {
+            width: 100%;
+        }
+
+        .org-delete-sm {
+            background: transparent;
+            border: 1px solid rgba(255,68,68,0.5);
+            color: #ff6666;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+        .org-delete-sm:hover {
+            background: rgba(255,68,68,0.1);
+            border-color: #ff4444;
+        }
+
+        /* правая колонка */
+        .org-right {
+            flex: 1;
+        }
+
+        .org-right h1 {
+            margin-bottom: 0.3rem;
+        }
+
+        .org-owner {
+            color: #22ff88;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .org-description {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .org-owner-btns {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .org-owner-btns .btn-green {
+            padding: 8px 18px;
+            font-size: 0.9rem;
+        }
+
+        .member-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .member-badge {
+            background: rgba(34,255,136,0.1);
+            border-radius: 20px;
+            padding: 0.4rem 1rem;
+            border: 1px solid rgba(34,255,136,0.2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .kick-btn {
+            background: none;
+            border: 1px solid #ff4444;
+            color: #ff4444;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.7rem;
+            margin-left: auto;
+            transition: 0.2s;
+        }
+        .kick-btn:hover {
+            background: rgba(255,68,68,0.2);
+        }
+
+        /* адаптив */
+        @media (max-width: 768px) {
+            .org-layout {
+                flex-direction: column;
+                align-items: center;
+            }
+            .org-banner-large {
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+<body style="background:transparent; overflow-y:auto; padding:0;">
+<div class="page-content">
+    <div style="margin-bottom: 1rem;">
+        <a href="/pages/organizations.html" style="color:#22ff88; text-decoration:none;">
+            <i class="fas fa-arrow-left"></i> Назад к организациям
+        </a>
+    </div>
+    <div class="glass-card" id="orgDetail">
+        <!-- Загрузка -->
+    </div>
+</div>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const orgId = urlParams.get('id');
+if (!orgId) {
+    document.body.innerHTML = '<p style="color:red;">Ошибка: не указан ID организации</p>';
+    throw new Error('No orgId');
+}
+
+async function load() {
+    try {
+        const resp = await fetch(`/api/organizations.php?action=get&id=${orgId}`, { credentials: 'include' });
+        const data = await resp.json();
+        if (!data.success) { alert(data.error); return; }
+        render(data);
+    } catch(e) { console.error(e); }
+}
+
+function render(data) {
+    const org = data.organization;
+    const members = data.members;
+    const userStatus = data.userStatus;
+    const isOwner = userStatus.is_owner;
+
+    // Левая колонка: баннер + кнопка удаления (только для владельца)
+    let leftHtml = `
+        <img src="../${org.banner_image || 'img/default_banner.png'}" class="org-banner-large" alt="Баннер">
+    `;
+    if (isOwner) {
+        leftHtml += `
+            <button class="org-delete-sm" onclick="deleteOrg()">
+                <i class="fas fa-trash"></i> Удалить
+            </button>
+        `;
+    }
+
+    // Кнопки действий (правая колонка)
+    let actionButton = '';
+    if (isOwner) {
+        // Для владельца кнопки добавляются отдельно ниже
+        actionButton = ''; // не используется
+    } else if (userStatus.role === 'deputy') {
+        actionButton = `
+            <button class="btn-green" onclick="manageRequests()"><i class="fas fa-envelope"></i> Заявки</button>
+            <button class="btn-green" onclick="manageBlacklist()"><i class="fas fa-ban"></i> Чёрный список</button>
+            <button class="btn-logout" onclick="leaveOrg()"><i class="fas fa-sign-out-alt"></i> Покинуть</button>
+        `;
+    } else if (userStatus.is_member) {
+        actionButton = `<button class="btn-logout" onclick="leaveOrg()"><i class="fas fa-sign-out-alt"></i> Покинуть</button>`;
+    } else if (userStatus.has_pending_request) {
+        actionButton = `<span class="badge">Заявка на рассмотрении</span>`;
+    } else if (userStatus.can_join) {
+        if (org.join_type === 'open') {
+            actionButton = `<button class="btn-green" onclick="joinOrg()"><i class="fas fa-door-open"></i> Вступить</button>`;
+        } else {
+            actionButton = `<button class="btn-green" onclick="requestJoin()"><i class="fas fa-paper-plane"></i> Подать заявку</button>`;
+        }
+    } else {
+        actionButton = `<span style="color:#aaa;">Вступление недоступно</span>`;
+    }
+
+    // Правая колонка: текст + кнопки
+    let rightHtml = `
+        <h1>${escapeHtml(org.name)}</h1>
+        <div class="org-owner"><i class="fas fa-crown"></i> ${escapeHtml(org.owner_nick)}</div>
+        <span class="badge" style="margin-bottom:0.8rem; display:inline-block;">${org.join_type === 'open' ? 'Открытая' : 'По заявкам'}</span>
+        <div class="org-description">${escapeHtml(org.description || 'Описание отсутствует')}</div>
+    `;
+
+    // Кнопки управления
+    if (isOwner) {
+        rightHtml += `<div class="org-owner-btns">`;
+        rightHtml += `<button class="btn-green" onclick="editOrg()"><i class="fas fa-edit"></i> Редактировать</button>`;
+        if (org.join_type === 'request') {
+            rightHtml += `<button class="btn-green" onclick="manageRequests()"><i class="fas fa-envelope"></i> Заявки</button>`;
+        }
+        rightHtml += `<button class="btn-green" onclick="transferOwnership()"><i class="fas fa-exchange-alt"></i> Передать</button>`;
+        rightHtml += `<button class="btn-green" onclick="manageBlacklist()"><i class="fas fa-ban"></i> Чёрный список</button>`;
+        rightHtml += `</div>`;
+    } else if (actionButton) {
+        rightHtml += `<div class="org-owner-btns">${actionButton}</div>`;
+    }
+
+    // Участники
+    rightHtml += `
+        <h2>Участники (${members.length})</h2>
+        <div class="member-list" id="memberListContainer">
+            ${members.map(m => `
+                <div class="member-badge">
+                    <i class="fas fa-${m.role==='owner'?'crown':(m.role==='deputy'?'star':'user')}"></i> ${escapeHtml(m.minecraft_nick)}
+                    ${isOwner && m.role !== 'owner' ? `
+                        <div style="display:flex; gap:4px; margin-left:auto;">
+                            ${m.role === 'deputy'
+                                ? `<button class="deputy-btn remove-deputy" data-playerid="${m.user_id}" title="Снять заместителя"><i class="fas fa-user-minus"></i></button>`
+                                : `<button class="deputy-btn appoint-deputy" data-playerid="${m.user_id}" title="Назначить заместителем"><i class="fas fa-user-plus"></i></button>`
+                            }
+                            <button class="kick-btn" data-playerid="${m.user_id}" title="Исключить"><i class="fas fa-times"></i></button>
+                        </div>
+                    ` : ''}
+                </div>
+            `).join('')}
+        </div>
+    `;
+
+    // Собираем всё
+    const html = `
+        <div class="org-layout">
+            <div class="org-left">${leftHtml}</div>
+            <div class="org-right">${rightHtml}</div>
+        </div>
+    `;
+
+    document.getElementById('orgDetail').innerHTML = html;
+
+    // Обработчик клика на кнопки заместителей и исключения
+    document.getElementById('orgDetail').addEventListener('click', async function(e) {
+        // Кнопки заместителя (назначить/снять)
+        const deputyBtn = e.target.closest('.deputy-btn');
+        if (deputyBtn) {
+            const playerId = deputyBtn.dataset.playerid;
+            const playerNick = deputyBtn.closest('.member-badge').innerText.trim();
+            const action = deputyBtn.classList.contains('appoint-deputy') ? 'appoint' : 'remove';
+            const confirmMsg = action === 'appoint'
+                ? `Назначить «${playerNick}» заместителем?`
+                : `Снять «${playerNick}» с должности заместителя?`;
+            if (!confirm(confirmMsg)) return;
+            try {
+                const r = await fetch('/api/organizations.php', {
+                    method: 'POST',
+                    headers: {'Content-Type':'application/json'},
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        action: 'set_deputy',
+                        organisation_id: orgId,
+                        player_id: playerId,
+                        deputy_action: action
+                    })
+                });
+                const d = await r.json();
+                if (d.success) {
+                    load();
+                } else {
+                    alert(d.error);
+                }
+            } catch(e) {
+                alert('Ошибка соединения');
+            }
+            return;
+        }
+
+        // Кнопки исключения
+        const kickBtn = e.target.closest('.kick-btn');
+        if (!kickBtn) return;
+        const playerId = kickBtn.dataset.playerid;
+        const playerNick = kickBtn.closest('.member-badge').innerText.trim();
+        if (!confirm(`Исключить игрока «${playerNick}» из организации?`)) return;
+        try {
+            const r = await fetch('/api/organizations.php', {
+                method: 'POST',
+                headers: {'Content-Type':'application/json'},
+                credentials: 'include',
+                body: JSON.stringify({ action: 'kick', organisation_id: orgId, player_id: playerId })
+            });
+            const d = await r.json();
+            if (d.success) {
+                load();
+            } else {
+                alert(d.error);
+            }
+        } catch(e) {
+            alert('Ошибка соединения');
+        }
+    });
+}
+
+// Функции действий
+async function joinOrg() {
+    const r = await fetch('/api/organizations.php', {
+        method: 'POST', headers: {'Content-Type':'application/json'}, credentials: 'include',
+        body: JSON.stringify({action:'join', id:orgId})
+    });
+    const d = await r.json();
+    if(d.success) load(); else alert(d.error);
+}
+async function requestJoin() {
+    const r = await fetch('/api/organizations.php', {
+        method: 'POST', headers: {'Content-Type':'application/json'}, credentials: 'include',
+        body: JSON.stringify({action:'request', id:orgId})
+    });
+    const d = await r.json();
+    if(d.success) load(); else alert(d.error);
+}
+async function leaveOrg() {
+    if(!confirm('Покинуть организацию?')) return;
+    const r = await fetch('/api/organizations.php', {
+        method: 'POST', headers: {'Content-Type':'application/json'}, credentials: 'include',
+        body: JSON.stringify({action:'leave', id:orgId})
+    });
+    const d = await r.json();
+    if(d.success) window.location.href = '/pages/organizations.html';
+    else alert(d.error);
+}
+async function editOrg() {
+    window.location.href = `/pages/organization-edit.html?id=${orgId}`;
+}
+async function deleteOrg() {
+    if(!confirm('Удалить организацию безвозвратно?')) return;
+    const r = await fetch('/api/organizations.php', {
+        method: 'POST', headers: {'Content-Type':'application/json'}, credentials: 'include',
+        body: JSON.stringify({action:'delete', id:orgId})
+    });
+    const d = await r.json();
+    if(d.success) window.location.href = '/pages/organizations.html';
+    else alert(d.error);
+}
+
+async function manageRequests() {
+    const r = await fetch(`/api/organizations.php?action=requests&id=${orgId}`, { credentials: 'include' });
+    const d = await r.json();
+    if (!d.success) { alert(d.error); return; }
+    let html = '<h3>Заявки</h3>';
+    if (d.requests.length === 0) html += '<p>Нет заявок.</p>';
+    else {
+        d.requests.forEach(req => {
+            html += `<div style="margin:0.5rem 0; display:flex; justify-content:space-between; align-items:center; background:rgba(0,0,0,0.3); padding:0.5rem; border-radius:8px;">
+                <span>${escapeHtml(req.minecraft_nick)}</span>
+                <div>
+                    <button class="btn-green" style="padding:4px 12px; font-size:0.8rem;" data-accept="${req.id}">Принять</button>
+                    <button style="background:transparent; border:1px solid #ff4444; color:#ff4444; padding:4px 12px; border-radius:6px; cursor:pointer; font-size:0.8rem; margin-left:0.3rem;" data-decline="${req.id}">Отклонить</button>
+                </div>
+            </div>`;
+        });
+    }
+
+    const modalOverlay = document.createElement('div');
+    modalOverlay.className = 'modal-overlay';
+    modalOverlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:9999;';
+    modalOverlay.innerHTML = `
+        <div class="glass-card" style="min-width:300px;">
+            ${html}
+            <button class="btn-logout close-modal" style="margin-top:1rem; width:100%;">Закрыть</button>
+        </div>`;
+    document.body.appendChild(modalOverlay);
+
+    modalOverlay.querySelector('.close-modal').addEventListener('click', () => modalOverlay.remove());
+    modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) modalOverlay.remove(); });
+
+    modalOverlay.querySelectorAll('[data-accept]').forEach(btn => {
+        btn.addEventListener('click', async () => {
+            await acceptReq(btn.dataset.accept, modalOverlay);
+        });
+    });
+    modalOverlay.querySelectorAll('[data-decline]').forEach(btn => {
+        btn.addEventListener('click', async () => {
+            await declineReq(btn.dataset.decline, modalOverlay);
+        });
+    });
+}
+
+async function transferOwnership() {
+    const resp = await fetch(`/api/organizations.php?action=get&id=${orgId}`, { credentials: 'include' });
+    const d = await resp.json();
+    const members = d.members.filter(m => m.role === 'member');
+    if (members.length === 0) { alert('Нет участников для передачи'); return; }
+    let html = '<h3>Выберите нового владельца</h3>';
+    members.forEach(m => {
+        html += `<button class="btn-green" style="margin:0.3rem;" data-newowner="${m.user_id}">${escapeHtml(m.minecraft_nick)}</button>`;
+    });
+    const modalOverlay = document.createElement('div');
+    modalOverlay.className = 'modal-overlay';
+    modalOverlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:9999;';
+    modalOverlay.innerHTML = `
+        <div class="glass-card">
+            ${html}
+            <button class="btn-logout close-modal" style="margin-top:1rem;">Отмена</button>
+        </div>`;
+    document.body.appendChild(modalOverlay);
+
+    modalOverlay.querySelector('.close-modal').addEventListener('click', () => modalOverlay.remove());
+    modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) modalOverlay.remove(); });
+
+    modalOverlay.querySelectorAll('[data-newowner]').forEach(btn => {
+        btn.addEventListener('click', async () => {
+            if (!confirm('Передать владение этому игроку?')) return;
+            const r = await fetch('/api/organizations.php', {
+                method: 'POST', headers: {'Content-Type':'application/json'}, credentials: 'include',
+                body: JSON.stringify({action:'transfer', id:orgId, new_owner_id: btn.dataset.newowner})
+            });
+            const res = await r.json();
+            if (res.success) {
+                load();
+                modalOverlay.remove();
+            } else alert(res.error);
+        });
+    });
+}
+
+async function acceptReq(requestId, modalOverlay) {
+    const r = await fetch('/api/organizations.php', {
+        method: 'POST', headers: {'Content-Type':'application/json'}, credentials: 'include',
+        body: JSON.stringify({ action:'accept_request', request_id: requestId })
+    });
+    const d = await r.json();
+    if (d.success) {
+        load();
+        modalOverlay.remove();
+    } else alert(d.error);
+}
+
+async function declineReq(requestId, modalOverlay) {
+    const r = await fetch('/api/organizations.php', {
+        method: 'POST', headers: {'Content-Type':'application/json'}, credentials: 'include',
+        body: JSON.stringify({ action:'decline_request', request_id: requestId })
+    });
+    const d = await r.json();
+    if (d.success) {
+        load();
+        modalOverlay.remove();
+    } else alert(d.error);
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+load();
+async function manageBlacklist() {
+    // Получаем список
+    const r = await fetch(`/api/organizations.php?action=blacklist_list&id=${orgId}`, { credentials: 'include' });
+    const d = await r.json();
+    if (!d.success) { alert(d.error); return; }
+
+    let html = '<h3>Чёрный список</h3>';
+    if (d.blacklist.length === 0) {
+        html += '<p>Список пуст</p>';
+    } else {
+        html += '<div style="max-height:300px; overflow-y:auto; margin-bottom:1rem;">';
+        d.blacklist.forEach(entry => {
+            html += `<div style="display:flex; justify-content:space-between; align-items:center; background:rgba(0,0,0,0.3); padding:0.5rem; border-radius:8px; margin-bottom:0.3rem;">
+                <span>${escapeHtml(entry.minecraft_nick)}</span>
+                <button style="background:transparent; border:1px solid #ff6666; color:#ff6666; padding:2px 10px; border-radius:6px; cursor:pointer; font-size:0.7rem; margin-left:0.5rem;" data-unban="${entry.id}">Разблокировать</button>
+            </div>`;
+        });
+        html += '</div>';
+    }
+    html += `
+        <div style="display:flex; gap:0.5rem; margin-top:1rem;">
+            <input type="text" id="blacklistNickInput" placeholder="Ник игрока" style="flex:1; background:rgba(0,0,0,0.5); border:1px solid rgba(34,255,136,0.3); border-radius:8px; padding:0.5rem; color:#fff;">
+            <button id="addToBlacklistBtn" class="btn-green" style="padding:0.5rem 1rem;">Добавить</button>
+        </div>
+    `;
+
+    const modalOverlay = document.createElement('div');
+    modalOverlay.className = 'modal-overlay';
+    modalOverlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:9999;';
+    modalOverlay.innerHTML = `
+        <div class="glass-card" style="min-width:350px; max-width:500px;">
+            ${html}
+            <button class="btn-logout close-modal" style="margin-top:1rem; width:100%;">Закрыть</button>
+        </div>`;
+    document.body.appendChild(modalOverlay);
+
+    // Закрытие
+    modalOverlay.querySelector('.close-modal').addEventListener('click', () => modalOverlay.remove());
+    modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) modalOverlay.remove(); });
+
+    // Добавление в ЧС
+    modalOverlay.querySelector('#addToBlacklistBtn').addEventListener('click', async () => {
+        const nick = modalOverlay.querySelector('#blacklistNickInput').value.trim();
+        if (!nick) return;
+        const addResp = await fetch('/api/organizations.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ action: 'blacklist_add', organisation_id: orgId, nick: nick })
+        });
+        const addData = await addResp.json();
+        if (addData.success) {
+            modalOverlay.remove();
+            manageBlacklist(); // переоткрыть обновлённый список
+        } else {
+            alert(addData.error);
+        }
+    });
+
+    // Разблокировка
+    modalOverlay.querySelectorAll('[data-unban]').forEach(btn => {
+        btn.addEventListener('click', async () => {
+            const entryId = btn.dataset.unban;
+            const unbanResp = await fetch('/api/organizations.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
+                body: JSON.stringify({ action: 'blacklist_remove', organisation_id: orgId, entry_id: entryId })
+            });
+            const unbanData = await unbanResp.json();
+            if (unbanData.success) {
+                modalOverlay.remove();
+                manageBlacklist(); // обновить
+            } else {
+                alert(unbanData.error);
+            }
+        });
+    });
+}
+</script>
+</body>
+</html>

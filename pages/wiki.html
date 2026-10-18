@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki | Timefall</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Unbounded:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body style="background: transparent; overflow-y: auto; padding: 0;">
+    <div class="page-content">
+        <div class="glass-card">
+            <h1><i class="fas fa-scroll"></i> Wiki проекта</h1>
+            <p style="margin-bottom: 2rem;">Полное руководство по всем механикам сервера. Изучайте лор, плагины и крафты!</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin: 1.5rem 0;">
+                <div style="flex: 1; text-align: left;">
+                    <i class="fas fa-check-circle" style="color:#22ff88;"></i> Версия 1.21.11
+                </div>
+                <div style="flex: 1; text-align: center;">
+                    <i class="fas fa-globe"></i> IP: timefall.wellduck.org
+                </div>
+                <div style="flex: 1; text-align: right;">
+                    <i class="fas fa-users"></i> Онлайн: 30+ игроков
+                </div>
+            </div>
+            <div class="wiki-tabs">
+                <button class="wiki-tab active-tab" data-wiki="plugins"><i class="fas fa-puzzle-piece"></i> Плагины (10)</button>
+                <button class="wiki-tab" data-wiki="crafts"><i class="fas fa-hammer"></i> Крафты (8)</button>
+                <button class="wiki-tab" data-wiki="ent"><i class="fas fa-dragon"></i> Лор</button>
+            </div>
+
+            <!-- Раздел плагины -->
+            <div id="wikiPlugins" class="wiki-content active-wiki">
+                <h2>Кастомные плагины</h2>
+                <p class="plugin-hint"><i class="fas fa-hand-pointer"></i> Нажмите на карточку, чтобы развернуть подробную информацию</p>
+                <div class="content-grid plugin-grid-blurred" id="pluginGrid">
+
+                                        <!-- ===== КАРТОЧКА ГЕНЕРАЦИЯ МИРОВ (Tectonic + Amplified Nether + Endercon) ===== -->
+                    <div class="glass-card plugin-card" style="padding: 1.2rem; width: 100%;" data-plugin-id="worldgen">
+                        <button class="plugin-close-btn" title="Свернуть"><i class="fas fa-times"></i></button>
+                        <div class="plugin-card-inner">
+                            <div class="plugin-preview">
+                                <img src="../img/tectonic.avif" alt="Генерация миров" class="hero-image">
+                                <h3><i class="fas fa-globe-americas"></i> Генерация миров</h3>
+                                <p>Полная переработка генерации всех трёх измерений: Верхнего мира, Нижнего мира и Энда. Континенты, 3D-биомы, новые ландшафты.</p>
+                            </div>
+                            <div class="plugin-details">
+                                <!-- Карусель: 3 фото -->
+                                <div class="detail-gallery" data-gallery>
+                                    <div class="detail-gallery-track">
+                                        <div class="detail-gallery-slide"><img src="../img/tectonic.avif" alt="Tectonic — Верхний мир"></div>
+                                        <div class="detail-gallery-slide"><img src="../img/amplifiednether.avif" alt="Amplified Nether — Нижний мир"></div>
+                                        <div class="detail-gallery-slide"><img src="../img/endercon.avif" alt="Endercon — Энд"></div>
+                                    </div>
+                                    <button class="detail-gallery-btn detail-gallery-prev"><i class="fas fa-chevron-left"></i></button>
+                                    <button class="detail-gallery-btn detail-gallery-next"><i class="fas fa-chevron-right"></i></button>
+                                    <span class="detail-gallery-counter">1 / 3</span>
+                                </div>
+                                
+                                <div class="detail-gallery-dots">
+                                    <span class="detail-gallery-dot active"></span>
+                                    <span class="detail-gallery-dot"></span>
+                                    <span class="detail-gallery-dot"></span>
+                                </div>
+                    
+                                <!-- Tectonic -->
+                                <div class="detail-description">
+                                    <p><strong>Tectonic</strong> — мощный датапак, полностью перерабатывающий ванильную генерацию ландшафта в Верхнем мире. Вместо стандартных однообразных биомов вы получаете реалистичные континенты с величественными горными хребтами, глубокими подземными реками и океанами.</p>
+                                </div>
+                    
+                                <!-- Amplified Nether -->
+                                <div class="detail-description" style="margin-top: 1.2rem;">
+                                    <p><strong>Amplified Nether</strong> использует возможности генерации высот из версии 1.18, чтобы превратить Нижний мир в трёхмерное полотно биомов с перепадами высот до 128 блоков.</p>
+                                </div>
+                    
+                                <!-- Endercon -->
+                                <div class="detail-description" style="margin-top: 1.2rem;">
+                                    <p><strong>Endercon</strong> — переосмысление всех биомов Энда с акцентом на рельеф и атмосферу. Добавлены два совершенно новых биома: Кристальные Поля и Обсидиановые Пустоши.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PALE GARDEN -->
+                    <div class="glass-card plugin-card" style="padding: 1.2rem; width: 100%;" data-plugin-id="pale-garden">
+                        <button class="plugin-close-btn" title="Свернуть"><i class="fas fa-times"></i></button>
+                        <div class="plugin-card-inner">
+                            <div class="plugin-preview">
+                                <img src="../img/palegarden.avif" alt="Pale Garden" class="hero-image">
+                                <h3><i class="fas fa-tree"></i> Pale Garden Update</h3>
+                                <p>Увеличена площадь генерации Бледного сада, введены подвиды скрипунов.</p>
+                            </div>
+                            <div class="plugin-details">
+                                <div class="detail-gallery" data-gallery>
+                                    <div class="detail-gallery-track"><div class="detail-gallery-slide"><img src="../img/palegarden.avif" alt="Pale Garden 1"></div></div>
+                                    <span class="detail-gallery-counter">1 / 1</span>
+                                </div>
+                                <div class="detail-description">
+                                    <p><strong>Pale Garden Update</strong> расширяет генерацию Бледного сада — одного из самых атмосферных биомов игры.</p>
+                                </div>
+                                <div class="detail-features">
+                                    <h4><i class="fas fa-star"></i> Ключевые особенности</h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Увеличенная площадь генерации</li>
+                                        <li><i class="fas fa-check"></i> Новые подвиды скрипунов: Молодой, Взрослый, Древний</li>
+                                        <li><i class="fas fa-check"></i> Все три вида отличаются по скорости передвижения, размеру и урону от их атаки</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Library Rebalance -->
+                    <div class="glass-card plugin-card" style="padding: 1.2rem; width: 100%;" data-plugin-id="library-rebalance">
+                        <button class="plugin-close-btn" title="Свернуть"><i class="fas fa-times"></i></button>
+                        <div class="plugin-card-inner">
+                            <div class="plugin-preview">
+                                <img src="../img/Plains_Librarian.png" alt="Library Rebalance" class="hero-image">
+                                <h3><i class="fas fa-book"></i> Library rebalance</h3>
+                                <p>Все торговые предложения библиотекарей были переработаны: некоторые книги теперь не продаются, а встречаются в различных локациях.</p>
+                            </div>
+                            <div class="plugin-details">
+                                <div class="detail-gallery" data-gallery>
+                                    <div class="detail-gallery-track">
+                                        <div class="detail-gallery-slide"><img src="../img/crafts/librarian.png" alt="Tectonic — Верхний мир"></div>
+                                        <div class="detail-gallery-slide"><img src="../img/crafts/wonder.png" alt="Amplified Nether — Нижний мир"></div>
+                                    </div>
+                                    <button class="detail-gallery-btn detail-gallery-prev"><i class="fas fa-chevron-left"></i></button>
+                                    <button class="detail-gallery-btn detail-gallery-next"><i class="fas fa-chevron-right"></i></button>
+                                    <span class="detail-gallery-counter">1 / 2</span>
+                                </div>
+                                <div class="detail-description">
+                                    <p><strong>Library Rebalance</strong> полностью перерабатывает систему торговли с библиотекарями.</p>
+                                </div>
+                                <div class="detail-features">
+                                    <h4><i class="fas fa-star"></i> Ключевые особенности</h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Полный ребаланс всех торговых предложений и распределение книг по уровню мастерства жителей.(I-III уровень книг)</li>
+                                        <li><i class="fas fa-check"></i> Редкие зачарования — только у странствующего торговца (максимальный уровень книг)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Catenary -->
+                    <div class="glass-card plugin-card" style="padding: 1.2rem; width: 100%;" data-plugin-id="catenary">
+                        <button class="plugin-close-btn" title="Свернуть"><i class="fas fa-times"></i></button>
+                        <div class="plugin-card-inner">
+                            <div class="plugin-preview">
+                                <img src="../img/catenary.avif" alt="Catenary" class="hero-image">
+                                <h3><i class="fas fa-link"></i> Catenary</h3>
+                                <p>Добавление различных декоративных цепей, по которым можно скользить при помощи лука.</p>
+                            </div>
+                            <div class="plugin-details">
+                                <div class="detail-gallery" data-gallery>
+                                    <div class="detail-gallery-track"><div class="detail-gallery-slide"><img src="../img/catenary.avif" alt="Catenary 1"></div></div>
+                                    <span class="detail-gallery-counter">1 / 1</span>
+                                </div>
+                                <div class="detail-description">
+                                    <p><strong>Catenary</strong> добавляет в игру декоративные и функциональные цепи для зиплайнов.</p>
+                                    <p><strong>Все крафты Catenary в разделе Wiki "Крафты"</strong></p>
+                                </div>
+                                <div class="detail-features">
+                                    <h4><i class="fas fa-star"></i> Ключевые особенности</h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Декоративные цепи различных типов</li>
+                                        <li><i class="fas fa-check"></i> Механика скольжения при помощи лука</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===== КАРТОЧКА PLASMO VOICE & ADDONS ===== -->
+                    <div class="glass-card plugin-card" style="padding: 1.2rem; width: 100%;" data-plugin-id="plasmo-voice-addons">
+                        <button class="plugin-close-btn" title="Свернуть"><i class="fas fa-times"></i></button>
+                        <div class="plugin-card-inner">
+                            <div class="plugin-preview">
+                                <img src="../img/plasmo.avif" alt="Plasmo Voice" class="hero-image">
+                                <h3><i class="fas fa-microphone"></i> Plasmo Voice & Addons</h3>
+                                <p>Продвинутый голосовой чат с пространственным 3D-звуком, кастомными пластинками и голосовыми сообщениями в чате.</p>
+                            </div>
+                            <div class="plugin-details">
+                                <!-- Карусель: 3 фото -->
+                                <div class="detail-gallery" data-gallery>
+                                    <div class="detail-gallery-track">
+                                        <div class="detail-gallery-slide"><img src="../img/plasmo.avif" alt="Plasmo Voice"></div>
+                                        <div class="detail-gallery-slide"><img src="../img/Music_Disc_5_JE1_BE1.png" alt="pv-addon-discs"></div>
+                                        <div class="detail-gallery-slide"><img src="../img/voice.avif" alt="Plasmo Voice Messages"></div>
+                                    </div>
+                                    <button class="detail-gallery-btn detail-gallery-prev"><i class="fas fa-chevron-left"></i></button>
+                                    <button class="detail-gallery-btn detail-gallery-next"><i class="fas fa-chevron-right"></i></button>
+                                    <span class="detail-gallery-counter">1 / 3</span>
+                                </div>
+                                <div class="detail-gallery-dots">
+                                    <span class="detail-gallery-dot active"></span>
+                                    <span class="detail-gallery-dot"></span>
+                                    <span class="detail-gallery-dot"></span>
+                                </div>
+                    
+                                <!-- Plasmo Voice -->
+                                <div class="detail-description">
+                                    <p><strong>Plasmo Voice</strong> — продвинутый голосовой чат с пространственным 3D-звуком, который позволяет слышать других игроков в зависимости от расстояния, направления и окружающих блоков.</p>
+                                    <p><strong>Требуется клиентстский мод</strong></p>
+                                </div>
+                                <div class="detail-features">
+                                    <h4><i class="fas fa-star"></i> Plasmo Voice — особенности</h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Пространственный 3D-звук</li>
+                                        <li><i class="fas fa-check"></i> Реалистичное затухание звука через блоки</li>
+                                        <li><i class="fas fa-check"></i> Направленный звук — слышно, с какой стороны говорит игрок</li>
+                                    </ul>
+                                </div>
+                    
+                                <!-- pv-addon-discs -->
+                                <div class="detail-description" style="margin-top: 1.2rem;">
+                                    <p><strong>pv-addon-discs</strong> — аддон для Plasmo Voice, позволяющий записывать кастомные звуки на музыкальные пластинки и обмениваться ими между игроками.</p>
+                                </div>
+                                <div class="detail-features">
+                                    <h4><i class="fas fa-star"></i> pv-addon-discs — особенности</h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Запись кастомных звуков на пластинки</li>
+                                        <li><i class="fas fa-check"></i> Обмен пластинками между игроками</li>
+                                        <li><i class="fas fa-check"></i> Поддержка любых аудиофайлов</li>
+                                    </ul>
+                                </div>
+                    
+                                <!-- Plasmo Voice Messages -->
+                                <div class="detail-description" style="margin-top: 1.2rem;">
+                                    <p><strong>Plasmo Voice Messages</strong> — аддон, добавляющий возможность записывать и отправлять голосовые сообщения прямо в чате игры.</p>
+                                    <p><strong>Требуется клиентстский мод</strong></p>
+                                </div>
+                                <div class="detail-features">
+                                    <h4><i class="fas fa-star"></i> Plasmo Voice Messages — особенности</h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Отправка голосовых сообщений в глобальный и локальный чат доступен только с подпиской Time+</li>
+                                        <li><i class="fas fa-check"></i> Персональная отправка одному человеку доступна всем</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Minecart Update -->
+                    <div class="glass-card plugin-card" style="padding: 1.2rem; width: 100%;" data-plugin-id="minecart-update">
+                        <button class="plugin-close-btn" title="Свернуть"><i class="fas fa-times"></i></button>
+                        <div class="plugin-card-inner">
+                            <div class="plugin-preview">
+                                <img src="../img/minecart.avif" alt="Minecart Update" class="hero-image">
+                                <h3><i class="fas fa-train"></i> Minecart Update</h3>
+                                <p>Мы ускорили обычные вагонетки до 35 bps. Это не повлияет на механизмы.</p>
+                            </div>
+                            <div class="plugin-details">
+                                <div class="detail-gallery" data-gallery>
+                                    <div class="detail-gallery-track"><div class="detail-gallery-slide"><img src="../img/minecart.avif" alt="Minecart 1"></div></div>
+                                    <span class="detail-gallery-counter">1 / 1</span>
+                                </div>
+                                <div class="detail-description">
+                                    <p><strong>Minecart Update</strong> — скорость обычных вагонеток увеличена до 35 блоков в секунду.</p>
+                                </div>
+                                <div class="detail-features">
+                                    <h4><i class="fas fa-star"></i> Ключевые особенности</h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Скорость вагонеток, если игрок в неё не сел: 8 bps</li>
+                                        <li><i class="fas fa-check"></i> Скорость вагонеток, если игрок в неё сел: 35 bps</li>
+                                        <li><i class="fas fa-check"></i> Все остальные вагонетки сохранили скорость в 8 bps</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card plugin-card" style="padding: 1.2rem; width: 100%;" data-plugin-id="minecart-update">
+                        <button class="plugin-close-btn" title="Свернуть"><i class="fas fa-times"></i></button>
+                        <div class="plugin-card-inner">
+                            <div class="plugin-preview">
+                                <img src="../img/imaginebook.avif" alt="Minecart Update" class="hero-image">
+                                <h3><i class="fas fa-images"></i> ImagineBook</h3>
+                                <p>Клиентский мод, который позволяет вставлять ваши изображения в книги.</p>
+                            </div>
+                            <div class="plugin-details">
+                                <div class="detail-gallery" data-gallery>
+                                    <div class="detail-gallery-track"><div class="detail-gallery-slide"><img src="../img/imaginebook.avif" alt="Minecart 1"></div></div>
+                                    <span class="detail-gallery-counter">1 / 1</span>
+                                </div>
+                                <div class="detail-description">
+                                    <p><strong>ImagineBook</strong> — создайте ссылку на ваше фото на imgur.com. Открыв книгу с пером вы можете вставить ссылку и настроить расположение готового изображения в книге.</p>
+                                    <p><strong>Требуется клиентстский мод</strong></p>
+                                </div>
+                                <div class="detail-features">
+                                    <h4><i class="fas fa-star"></i> Ключевые особенности</h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Обязательно использовать ссылки из imgur.com или похожих сайтов, у который не устаревает ссылка на изображение</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card plugin-card" style="padding: 1.2rem; width: 100%;" data-plugin-id="minecart-update">
+                        <button class="plugin-close-btn" title="Свернуть"><i class="fas fa-times"></i></button>
+                        <div class="plugin-card-inner">
+                            <div class="plugin-preview">
+                                <img src="../img/armor_poser.avif" alt="Minecart Update" class="hero-image">
+                                <h3><i class="fas fa-tshirt"></i> Armor Poser</h3>
+                                <p>Используйте стойки для брони на максимум!</p>
+                            </div>
+                            <div class="plugin-details">
+                                <div class="detail-gallery" data-gallery>
+                                    <div class="detail-gallery-track"><div class="detail-gallery-slide"><img src="../img/armor_poser.avif" alt="Minecart 1"></div></div>
+                                    <span class="detail-gallery-counter">1 / 1</span>
+                                </div>
+                                <div class="detail-description">
+                                    <p><strong>Armor Poser</strong> — благодаря внутреннему интерфейсу мода, можно настроить различные позы стоик для брони.</p>
+                                    <p><strong>Требуется клиентстский мод</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card plugin-card" style="padding: 1.2rem; width: 100%;" data-plugin-id="minecart-update">
+                        <button class="plugin-close-btn" title="Свернуть"><i class="fas fa-times"></i></button>
+                        <div class="plugin-card-inner">
+                            <div class="plugin-preview">
+                                <img src="../img/emotecraft.avif" alt="Minecart Update" class="hero-image">
+                                <h3><i class="fas fa-laugh-beam"></i> Emotecraft</h3>
+                                <p>Показывайте свои эмоции всем игрокам на сервере.</p>
+                            </div>
+                            <div class="plugin-details">
+                                <div class="detail-gallery" data-gallery>
+                                    <div class="detail-gallery-track"><div class="detail-gallery-slide"><img src="../img/emotecraft.avif" alt="Minecart 1"></div></div>
+                                    <span class="detail-gallery-counter">1 / 1</span>
+                                </div>
+                                <div class="detail-description">
+                                    <p><strong>Emotecraft</strong> — вы можете использовать свои пользовательские анимации.</p>
+                                </div>
+                                <div class="detail-features">
+                                    <h4><i class="fas fa-star"></i> Требующиеся клиентские моды</h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Emotecraft</li>
+                                        <li><i class="fas fa-check"></i> Bendable Cuboids</li>
+                                        <li><i class="fas fa-check"></i> Player Animation Library</li>
+                                        <li><i class="fas fa-check"></i> Online Emotes</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card plugin-card" style="padding: 1.2rem; width: 100%;" data-plugin-id="minecart-update">
+                        <button class="plugin-close-btn" title="Свернуть"><i class="fas fa-times"></i></button>
+                        <div class="plugin-card-inner">
+                            <div class="plugin-preview">
+                                <img src="../img/CPM.avif" alt="Minecart Update" class="hero-image">
+                                <h3><i class="fas fa-person"></i> CPM</h3>
+                                <p>Модифицируйте свою модель игрока.</p>
+                            </div>
+                            <div class="plugin-details">
+                                <div class="detail-gallery" data-gallery>
+                                    <div class="detail-gallery-track"><div class="detail-gallery-slide"><img src="../img/CPM.avif" alt="Minecart 1"></div></div>
+                                    <span class="detail-gallery-counter">1 / 1</span>
+                                </div>
+                                <div class="detail-description">
+                                    <p><strong>CPM</strong> — Customizable Player Models. Вы можете использовать свои пользовательские дополнения к модели персонажа.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card plugin-card" style="padding: 1.2rem; width: 100%;" data-plugin-id="minecart-update">
+                        <button class="plugin-close-btn" title="Свернуть"><i class="fas fa-times"></i></button>
+                        <div class="plugin-card-inner">
+                            <div class="plugin-preview">
+                                <img src="../img/OmniCut.avif" alt="Minecart Update" class="hero-image">
+                                <h3><i class="fas fa-ruler-combined"></i> OmniCut</h3>
+                                <p>Расширение функционала камнереза.</p>
+                            </div>
+                            <div class="plugin-details">
+                                <div class="detail-gallery" data-gallery>
+                                    <div class="detail-gallery-track"><div class="detail-gallery-slide"><img src="../img/OmniCut.avif" alt="Minecart 1"></div></div>
+                                    <span class="detail-gallery-counter">1 / 1</span>
+                                </div>
+                                <div class="detail-description">
+                                    <p><strong>OmniCut</strong> — увеличивает количество предметов, которые можно создать в камнерезе.</p>
+                                </div>
+                                <div class="detail-features">
+                                    <h4><i class="fas fa-star"></i> Новый функционал</h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Заготовка древесины из бревен</li>
+                                        <li><i class="fas fa-check"></i> Резка меди</li>
+                                        <li><i class="fas fa-check"></i> Резка глубинного сланца</li>
+                                        <li><i class="fas fa-check"></i> Переработка в изначальный блок</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card plugin-card" style="padding: 1.2rem; width: 100%;" data-plugin-id="library-rebalance">
+                        <button class="plugin-close-btn" title="Свернуть"><i class="fas fa-times"></i></button>
+                        <div class="plugin-card-inner">
+                            <div class="plugin-preview">
+                                <img src="../img/TablePlays.avif" alt="Library Rebalance" class="hero-image">
+                                <h3><i class="fas fa-dice"></i> TablePlays</h3>
+                                <p>Добавлена возможность создания различных настольных игр.</p>
+                            </div>
+                            <div class="plugin-details">
+                                <div class="detail-gallery" data-gallery>
+                                    <div class="detail-gallery-track">
+                                        <div class="detail-gallery-slide"><img src="../img/TablePlays/cards.avif" alt="Tectonic — Верхний мир"></div>
+                                        <div class="detail-gallery-slide"><img src="../img/TablePlays/cube.avif" alt="Amplified Nether — Нижний мир"></div>
+                                        <div class="detail-gallery-slide"><img src="../img/TablePlays/dominos.avif" alt="Amplified Nether — Нижний мир"></div>
+                                        <div class="detail-gallery-slide"><img src="../img/TablePlays/doska.avif" alt="Amplified Nether — Нижний мир"></div>
+                                        <div class="detail-gallery-slide"><img src="../img/TablePlays/fichki.avif" alt="Amplified Nether — Нижний мир"></div>
+                                        <div class="detail-gallery-slide"><img src="../img/TablePlays/fishka.avif" alt="Amplified Nether — Нижний мир"></div>
+                                        <div class="detail-gallery-slide"><img src="../img/TablePlays/shahmati.avif" alt="Amplified Nether — Нижний мир"></div>
+                                        <div class="detail-gallery-slide"><img src="../img/TablePlays/shashki.avif" alt="Amplified Nether — Нижний мир"></div>
+                                    </div>
+                                    <button class="detail-gallery-btn detail-gallery-prev"><i class="fas fa-chevron-left"></i></button>
+                                    <button class="detail-gallery-btn detail-gallery-next"><i class="fas fa-chevron-right"></i></button>
+                                    <span class="detail-gallery-counter">1 / 8</span>
+                                </div>
+                                <div class="detail-description">
+                                    <p><strong>TablePlays</strong> - добавляет большое количество функциональных вариаций для настольных игр</p>
+                                </div>
+                                <div class="detail-features">
+                                    <h4><i class="fas fa-star"></i> Игры</h4>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Колоды на 36, 52 и 54 карт</li>
+                                        <li><i class="fas fa-check"></i> Игральный кубик</li>
+                                        <li><i class="fas fa-check"></i> Домино</li>
+                                        <li><i class="fas fa-check"></i> Шашки</li>
+                                        <li><i class="fas fa-check"></i> Шахматы</li>
+                                        <li><i class="fas fa-check"></i> Фишки</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Крафты -->
+            <div id="wikiCrafts" class="wiki-content">
+                <div class="glass-card" style="padding: 1.2rem; width: 100%;">
+                    <h2>Vanilla+</h2>
+                    <div class="feature-card" style="margin-bottom: 1rem;">
+                        <h3>Невидимые рамки (8 шт.)</h3>
+                        <p>Такой же крафт для светящихся невидимых рамок</p>
+                        <img src="../img/crafts/craft_item_frame.avif" alt="Крафт рамок" class="hero-image-contained">
+                    </div>
+                    <div class="feature-card" style="margin-bottom: 1rem;">
+                        <h3>Невидимый свет (4 шт.)</h3>
+                        <img src="../img/crafts/craft_light.avif" alt="Крафт света" class="hero-image-contained">
+                    </div>
+                </div>
+                <div class="glass-card" style="padding: 1.2rem; width: 100%;">
+                    <h2>Catenary</h2>
+                    <div class="feature-card" style="margin-bottom: 1rem;">
+                        <h3>Верстак для создания цепей</h3>
+                        <img src="../img/crafts/craft_fletching_table.avif" alt="Верстак" class="hero-image-contained">
+                    </div>
+                    <div class="feature-card" style="margin-bottom: 1rem;">
+                        <h3>Особенности крафта цепей</h3>
+                        <img src="../img/crafts/catenary.png" alt="Крафт цепей" class="hero-image-contained">
+                    </div>
+                    <div class="feature-card" style="margin-bottom: 1rem;">
+                        <h3>Китайский фонарик для цепей</h3>
+                        <img src="../img/crafts/craft_red_head.avif" alt="Фонарик" class="hero-image-contained">
+                    </div>
+                    <div class="feature-card" style="margin-bottom: 1rem;">
+                        <h3>Зиплайн лифт</h3>
+                        <img src="../img/crafts/craft_zipline_lift_upgrade.avif" alt="Лифт" class="hero-image-contained">
+                    </div>
+                    <div class="feature-card" style="margin-bottom: 1rem;">
+                        <h3>Плита для посадки на зиплайн</h3>
+                        <img src="../img/crafts/craft_zipline_mount_pad.avif" alt="Плита" class="hero-image-contained">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Лор -->
+            <div id="wikiEnt" class="wiki-content">
+                <div class="lore-container">
+                    <p class="plugin-hint"><i class="fas fa-info-circle"></i> Исследуйте аудиозаписи и дневники мира</p>
+                    
+                    <!-- Подразделы лора -->
+                    <div class="lore-subtabs">
+                        <button class="lore-subtab active" data-lore-category="all">Все записи</button>
+                        <button class="lore-subtab" data-lore-category="global">Глобальный лор</button>
+                        <button class="lore-subtab" data-lore-category="local">Локальный лор</button>
+                    </div>
+                    
+                    <!-- Селектор локаций (появляется при выборе "Локальный") -->
+                    <div id="loreLocationSelector" class="lore-location-selector" style="display: none;">
+                        <label for="locationSelect">Выберите локацию:</label>
+                        <select id="locationSelect">
+                            <option value="all">Все локации</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Сетка с записями -->
+                    <div id="loreEntriesGrid" class="lore-entries-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== ТАБЫ ====================
+        const tabs = document.querySelectorAll('.wiki-tab');
+        const contents = {
+            ent: document.getElementById('wikiEnt'),
+            plugins: document.getElementById('wikiPlugins'),
+            crafts: document.getElementById('wikiCrafts')
+        };
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.getAttribute('data-wiki');
+                Object.values(contents).forEach(c => c.classList.remove('active-wiki'));
+                tabs.forEach(t => t.classList.remove('active-tab'));
+                if (contents[target]) contents[target].classList.add('active-wiki');
+                tab.classList.add('active-tab');
+            });
+        });
+
+        // ==================== POPOVER-ЛОГИКА ====================
+        const pluginGrid = document.getElementById('pluginGrid');
+        let currentlyExpanded = null;
+        let currentPlaceholder = null;
+        let isAnimating = false;
+
+        function getGridMetrics() {
+            const style = getComputedStyle(pluginGrid);
+            const gap = parseFloat(style.columnGap) || 24;
+            const cols = style.gridTemplateColumns.split(' ').length;
+            const gridWidth = pluginGrid.clientWidth;
+            const totalGaps = gap * (cols - 1);
+            const colWidth = (gridWidth - totalGaps) / cols;
+            return { gap, cols, colWidth, gridWidth };
+        }
+
+        function getTwoColumnWidth() {
+            const { gap, colWidth } = getGridMetrics();
+            return colWidth * 2 + gap;
+        }
+
+        function isLastInRow(card) {
+            const cards = Array.from(pluginGrid.querySelectorAll('.plugin-card:not(.plugin-card-placeholder)'));
+            const { cols } = getGridMetrics();
+            const index = cards.indexOf(card);
+            if (index === -1) return false;
+            const positionInRow = (index % cols) + 1;
+            return positionInRow === cols || index === cards.length - 1;
+        }
+
+        pluginGrid.addEventListener('click', (e) => {
+            if (isAnimating) return;
+
+            const card = e.target.closest('.plugin-card');
+            if (!card) {
+                if (currentlyExpanded) collapseCard(currentlyExpanded);
+                return;
+            }
+
+            if (e.target.closest('.plugin-close-btn')) {
+                collapseCard(card);
+                return;
+            }
+
+            if (e.target.closest('.detail-gallery-btn') || e.target.closest('.detail-gallery-dot')) {
+                return;
+            }
+
+            if (card.classList.contains('expanded')) {
+                collapseCard(card);
+            } else {
+                if (currentlyExpanded && currentlyExpanded !== card) {
+                    collapseCard(currentlyExpanded);
+                }
+                expandCard(card);
+            }
+        });
+
+        function expandCard(card) {
+            isAnimating = true;
+
+            const rect = card.getBoundingClientRect();
+            const gridRect = pluginGrid.getBoundingClientRect();
+            const top = rect.top - gridRect.top + pluginGrid.scrollTop;
+            const cardLeft = rect.left - gridRect.left;
+            const cardWidth = rect.width;
+            const twoColWidth = getTwoColumnWidth();
+
+            const lastInRow = isLastInRow(card);
+            let targetLeft;
+            if (lastInRow) {
+                targetLeft = cardLeft + cardWidth - twoColWidth;
+                if (targetLeft < 0) targetLeft = 0;
+            } else {
+                targetLeft = cardLeft;
+            }
+
+            // Создаём плейсхолдер
+            const placeholder = document.createElement('div');
+            placeholder.className = 'glass-card plugin-card-placeholder';
+            placeholder.style.cssText = card.style.cssText;
+            placeholder.style.width = '';
+            card.parentNode.insertBefore(placeholder, card);
+            currentPlaceholder = placeholder;
+
+            // Сохраняем исходные размеры
+            card._originalRect = { top, left: cardLeft, width: cardWidth };
+            card._placeholder = placeholder;
+
+            // Ставим карточку в absolute с исходными координатами
+            card.style.position = 'absolute';
+            card.style.top = top + 'px';
+            card.style.left = cardLeft + 'px';
+            card.style.width = cardWidth + 'px';
+            card.style.margin = '0';
+
+            // Принудительный reflow
+            card.offsetHeight;
+
+            // Анимируем к целевой позиции
+            card.classList.add('expanded');
+            card.style.left = targetLeft + 'px';
+            card.style.width = twoColWidth + 'px';
+
+            pluginGrid.classList.add('active');
+            currentlyExpanded = card;
+
+            initGallery(card);
+
+            setTimeout(() => {
+                card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 150);
+
+            setTimeout(() => {
+                isAnimating = false;
+            }, 500);
+        }
+
+        function collapseCard(card) {
+            isAnimating = true;
+
+            // Сразу убираем блюр
+            pluginGrid.classList.remove('active');
+
+            // Убираем expanded, добавляем collapsing для анимации схлопывания
+            card.classList.remove('expanded');
+            card.classList.add('collapsing');
+
+            // Анимируем карточку обратно к исходным размерам
+            if (card._originalRect && card._placeholder) {
+                const placeholderRect = card._placeholder.getBoundingClientRect();
+                const gridRect = pluginGrid.getBoundingClientRect();
+                const targetTop = placeholderRect.top - gridRect.top + pluginGrid.scrollTop;
+                const targetLeft = placeholderRect.left - gridRect.left;
+                const targetWidth = placeholderRect.width;
+
+                card.style.top = targetTop + 'px';
+                card.style.left = targetLeft + 'px';
+                card.style.width = targetWidth + 'px';
+                card.style.boxShadow = '';
+            }
+
+            // После завершения анимации возвращаем в поток
+            setTimeout(() => {
+                card.classList.remove('collapsing');
+                card.style.position = '';
+                card.style.top = '';
+                card.style.left = '';
+                card.style.width = '';
+                card.style.margin = '';
+
+                if (currentPlaceholder) {
+                    currentPlaceholder.remove();
+                    currentPlaceholder = null;
+                }
+
+                if (currentlyExpanded === card) {
+                    currentlyExpanded = null;
+                }
+
+                delete card._originalRect;
+                delete card._placeholder;
+
+                isAnimating = false;
+            }, 450);
+        }
+
+        // Ресайз
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                if (currentlyExpanded && currentPlaceholder) {
+                    const rect = currentPlaceholder.getBoundingClientRect();
+                    const gridRect = pluginGrid.getBoundingClientRect();
+                    const top = rect.top - gridRect.top + pluginGrid.scrollTop;
+                    const cardLeft = rect.left - gridRect.left;
+                    const twoColWidth = getTwoColumnWidth();
+                    const lastInRow = isLastInRow(currentlyExpanded);
+
+                    let left;
+                    if (lastInRow) {
+                        left = cardLeft + rect.width - twoColWidth;
+                        if (left < 0) left = 0;
+                    } else {
+                        left = cardLeft;
+                    }
+
+                    currentlyExpanded.style.top = top + 'px';
+                    currentlyExpanded.style.left = left + 'px';
+                    currentlyExpanded.style.width = twoColWidth + 'px';
+
+                    currentlyExpanded._originalRect = { top, left: cardLeft, width: rect.width };
+                }
+            }, 150);
+        });
+
+        // Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && currentlyExpanded && !isAnimating) {
+                collapseCard(currentlyExpanded);
+            }
+        });
+
+        // ==================== ГАЛЕРЕЯ ====================
+        function initGallery(card) {
+            const galleryContainer = card.querySelector('[data-gallery]');
+            if (!galleryContainer || galleryContainer.dataset.initialized) return;
+
+            galleryContainer.dataset.initialized = 'true';
+
+            const track = galleryContainer.querySelector('.detail-gallery-track');
+            const slides = track.querySelectorAll('.detail-gallery-slide');
+            const prevBtn = galleryContainer.querySelector('.detail-gallery-prev');
+            const nextBtn = galleryContainer.querySelector('.detail-gallery-next');
+            const counter = galleryContainer.querySelector('.detail-gallery-counter');
+            const dotsContainer = card.querySelector('.detail-gallery-dots');
+
+            if (slides.length <= 1) {
+                if (prevBtn) prevBtn.style.display = 'none';
+                if (nextBtn) nextBtn.style.display = 'none';
+                if (dotsContainer) dotsContainer.style.display = 'none';
+                if (counter) counter.style.display = 'none';
+            }
+
+            let currentIndex = 0;
+
+            function goToSlide(index) {
+                currentIndex = Math.max(0, Math.min(index, slides.length - 1));
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                if (counter) counter.textContent = `${currentIndex + 1} / ${slides.length}`;
+                if (dotsContainer) {
+                    dotsContainer.querySelectorAll('.detail-gallery-dot').forEach((dot, i) => {
+                        dot.classList.toggle('active', i === currentIndex);
+                    });
+                }
+            }
+
+            if (prevBtn) prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (currentIndex > 0) goToSlide(currentIndex - 1);
+            });
+
+            if (nextBtn) nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (currentIndex < slides.length - 1) goToSlide(currentIndex + 1);
+            });
+
+            if (dotsContainer) {
+                dotsContainer.querySelectorAll('.detail-gallery-dot').forEach((dot, i) => {
+                    dot.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        goToSlide(i);
+                    });
+                });
+            }
+
+            let touchStartX = 0;
+            galleryContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            galleryContainer.addEventListener('touchend', (e) => {
+                const diff = touchStartX - e.changedTouches[0].screenX;
+                if (Math.abs(diff) > 50) {
+                    e.stopPropagation();
+                    if (diff > 0 && currentIndex < slides.length - 1) {
+                        goToSlide(currentIndex + 1);
+                    } else if (diff < 0 && currentIndex > 0) {
+                        goToSlide(currentIndex - 1);
+                    }
+                }
+            });
+        }
+        // ==================== ЛОР: ДАННЫЕ И ЛОГИКА ====================
+        const loreData = [
+            // Поддержка одного трека (строка) или нескольких (массив { title, src })
+            {
+                id: 1,
+                title: "Открытие сезона",
+                category: "global",
+                text: "Хм, какую причудливую форму они приняли, ну хорошо, вернусь к ним чуть позже...",
+                audio: "../audio/StartSeason.ogg"
+            },
+            {
+                id: 2,
+                title: "Активация Незера",
+                category: "global",
+                text: "",
+                audio: [
+                    { title: "Часть 1", src: "../audio/nether1.ogg" },
+                    { title: "Часть 2", src: "../audio/nether2.ogg" }
+                ]
+            },
+            {
+                id: 3,
+                title: "Хижина рыбака",
+                category: "local",
+                location: "Парадокс",
+                text: "Были обнаружены голубые кристалы и их осколки, странная рыба.",
+                audio: null
+            },
+            {
+                id: 4,
+                title: "Сторожевая башня",
+                category: "local",
+                location: "Парадокс",
+                text: [
+                    "Третий месяц я остаюсь в этой башне один. Когда-то отсюда были видны деревни, поля и огни караванов. Теперь по ночам на горизонте видны лишь пожары. Говорят, война ещё продолжается, но мне всё чаще кажется, что мы уже давно проиграли и просто не хотим признать это.",
+                    "Каждый день я поднимаюсь на вершину башни и смотрю вдаль. Не потому что жду помощи. Просто страж перестаёт быть стражем в тот день, когда перестаёт смотреть.",
+                    "Внизу живёт маленькая зелёная ящерица. Я нарёк её Великим Пожирателем Империй. Она не согласна с этим титулом и большую часть времени занимается охотой на насекомых. Возможно, она мудрее всех наших генералов."
+                ],
+                images: "../img/lor/green_yash.avif",
+                audio: null
+            },
+            {
+                id: 5,
+                title: "Разрушенный корабль",
+                category: "local",
+                location: "Парадокс",
+                text: [
+                    "Запись № 47. 14-й день цикла Убывающей Луны. С утра опять сбоит компас. Третий день подряд. Боцман Ли клянётся, что это из-за железного груза в трюме. Видимо из-за него связь с магнетитом слабнет.",
+                    "Обед прошёл спокойно. Ветер слабый, но ровный - идём к Рифам Разбитых Надежд. Если старые карты не врут, там есть проход в Тихие Воды, где можно переждать сезон штормов.",
+                    "Вчера, когда снимались с якоря у Мёртвого Атолла, я впервые увидел ИХ. Подняли сеть - а там не рыба. Существо ростом мне по пояс, с перепончатыми пальцами и ушами. Оно не билось, не дёргалось - просто смотрело.",
+                    "Команда зашевелилась, кто-то крикнул «нечисть», но я приказал отпустить. Сеть раскрыли, и оно ушло вниз стрелой - быстрее любого тунца.  Старый штурман Ван, который ходил в этих водах ещё при моём отце, сказал, что это — Пискун.",
+                    "Так их называют в древних хрониках. Подводный народ, который не выносит солнца. Если их кожа остаётся без воды или без тени, она начинает тлеть, а потом и гореть. Свет им вредит. Потому они и живут там, куда солнечные лучи почти не проникают.",
+                ],
+                images: "../img/lor/piscun.avif",
+                audio: null
+            },
+            {
+                id: 6,
+                title: "Личный дневник",
+                category: "global",
+                text: [
+                    "Сегодня снова шум наверху. Вентиляция дрожит будто по потолку ходят. Мама говорит это нормально. Я не уверен что нормально когда стены звучат.",
+                    "Мы под землёй давно. Я не помню небо. Говорят оно есть или там ничего хорошего. Я не знаю кому верить",
+                    "Туннели разные: узкие, тёмные, укреплённые. Но все ведут вниз. И никогда наверх. Это чувство никогда наверх остаётся всегда.",
+                    "Отец сказал: «Хорошие туннели те по которым можно вернуться.» Я спросил:«А если выхода нет?». Он молчал слишком долго.",
+                    "Очередь за ресурсами. Люди спорят, кричат, потом молчат. Сначала слова потом тишина и между ними пусто.",
+                    "Я спросил, почему не строим больше. Мама сказала мы делаем всё, что можем, но в голосе не было уверенности.",
+                    "Впервые услышал - война. Сказали громко. После этого коридоры стали слишком тихими даже для дыхания.",
+                    "Люди с верхних туннелей молчат. Не смотрят друг на друга. Взрослые знают, что делают или просто делают вид.",
+                    "Я считаю туннели. Их не мало. Их бесконечно много и все одинаково серые, как пыль.",
+                    "Сегодня я пошёл дальше обычного маршрута. Никто не заметил. Там холодно, тише и честнее, чем наверху всегда.",
+                    "Нашёл старый проход почти разрушен, но почему-то важен.",
+                    "Если мы под землёй, значит есть место выше? И почему тогда мы живём здесь, а не там?",
+                    "— Не задавай лишних вопросов, сказал он. И после этого вопросы стали звучать неправильно.",
+                    "Ветер будто говорит, но смысл теряется в стенах. Если идти долго прямо, кажется, что стены дышат, и туннель тоже живой.",
+                    "Я пишу это, чтобы не забыть или понять, или потому, что никто не спрашивает, что я думаю и это странно.",
+                    "Сегодня всё тише. Даже ветер люди и я, как будто кто-то выключил мир.",
+                    "Туннель заканчивается, не разрушен, просто нет дальше, и это выглядит как решение, а не ошибка. “Нет дальше” это не ответ, это запрет, который никто не объяснил. Дорога назад стала другой, будто я шёл не назад, а в сторону и это чувство не уходит.",
+                    "Шум наверху теперь звучит, как обещание чего-то, что я не понимаю. Туннели не конец. Это начало того, что мы не видим и, возможно, никогда не должны были видеть."
+                ],
+                audio: null
+            },
+            {
+                id: 7,
+                title: "Заброшенный бункер",
+                category: "local",
+                location: "Парадокс",
+                text: [
+                    "Книга Наблюдателя №527",
+                    "Запись 6. Сегодня один из шахтёров женился. Вечером почти все собрались поздравить его. Даже после долгой смены нашлись силы смеяться. Такие дни здесь случаются редко.",
+                    "Запись 11. За обедом спорили, кто выкопал больше породы за неделю. Спор закончился смехом. Иногда кажется, что подобные мелочи помогают им забыть, где они находятся.",
+                    "Запись 17. Он молчит чаще, чем говорит. Книга всегда в его руках — даже во время работы. Не знаю, читает ли он её или просто боится потерять. Но расстаётся с ней он только тогда, когда засыпает.",
+                    "Запись 18. У старого шахтёра сегодня день рождения. Кто-то испёк небольшой пирог. Получилось неровно, но никто не жаловался. В шахте ценят не вкус, а повод собраться.",
+                    "Запись 23. Сегодня работа закончилась раньше обычного. Несколько человек устроили игру в карты, остальные просто сидели и разговаривали. В такие вечера шахта кажется почти обычным местом.",
+                    "Запись 29. Чем глубже шахта, тем слабее становятся люди. Но Лапис будто живёт наоборот. На глубине его движения становятся быстрее, дыхание спокойнее. Свет он не носит. Похоже, он видит то, чего не видим мы."
+                ],
+                audio: null
+            },
+            {
+                id: 8,
+                title: "Открытие Энда",
+                category: "global",
+                text: "Никто не стал нам помогать, со стражем пришлось разбираться самим",
+                audio: [
+                    { title: "Часть 1", src: "../audio/open_end1.MP3" },
+                    { title: "Часть 2", src: "../audio/open_end2.MP3" }
+                ]
+            },
+            {
+                id: 9,
+                title: "Монолит",
+                category: "local",
+                location: "Парадокс",
+                text: [
+                    "Сегодня удалось измерить его рост. Почти два с половиной блока. Теперь понятно, почему он всегда наклоняет голову, проходя через обычные двери.",
+                    "Решил проверить, умеет ли он плавать. Не умеет. Он просто ушёл под воду, словно не понимал, что должен всплыть. Больше этот опыт повторять не хочу.",
+                    "Обычную пищу он ест без каких-либо проблем, но интереса к ней почти не проявляет. Складывается впечатление, что она лишь утоляет голод, но не насыщает его.",
+                    "Сегодня оставил рядом руды, слитки, самородки и незеритовый обломок. Он сразу выбрал металл, полностью проигнорировав остальную еду. Похоже, именно такой рацион для него привычен.",
+                    "Зовут его Големаром"
+                    ],
+                audio: null
+            },
+            {
+                id: 10,
+                title: "Монолит",
+                category: "global",
+                location: "Парадокс",
+                text: [
+                    "Теперь я тоже ношу ящики на передовую. Раньше мне казалось, что солдаты — это какие-то особенные люди. Теперь понимаю. Они просто устают чаще остальных.",
+                    "Меня уже знают. Когда прихожу, один всегда говорит: — Опять ты? А потом улыбается. Кажется, он рад, что я всё ещё прихожу.",
+                    "Сегодня мне дали каску. Она слишком большая. Все смеялись. Я тоже. Хотя не понял, что смешного.",
+                    "Спросил одного бойца: — Когда закончится война? Он долго молчал. Потом сказал: — Когда закончатся люди. Не думаю, что это был ответ.",
+                    "Сегодня впервые нёс не только еду. Ящики были тяжелее обычного. Я не стал спрашивать, что внутри. Наверное, иногда лучше {ЗАЧЕРКНУТЬ}[не знать].",
+                    "Один туннель обрушился. Все сразу начали копать. Никто не спросил, кто оказался внутри. Будто ответ был {ЖИРНЫЙ}[очевиден].",
+                    "Есть солдат, который всегда рисует мелом стрелки на стенах. Я спросил зачем. Он сказал: — Чтобы тем, кто пойдёт после нас, было проще найти дорогу. Мне понравилась эта мысль.",
+                    "Сегодня стрелок не пришёл. Но его стрелки остались.",
+                    "Я всё чаще замечаю, что взрослые перестали говорить слово «после». Все говорят только сегодня.",
+                    "Иногда кажется, что туннели становятся длиннее. Хотя все уверяют, что это невозможно.",
+                    "Сегодня впервые услышал людей с другой стороны. Мы были совсем рядом. Они говорили почти так же, как мы. Они тоже смеялись. Странно.",
+                    "Я спросил: — Они плохие? Мне ответили: — Конечно. Почему-то этого оказалось недостаточно.",
+                    "Сегодня нашли мешок с едой. На нём был знак другой стороны. Мы всё равно её съели. Никто ничего не сказал.",
+                    "Иногда мне кажется... Если поменять нас местами, мы бы тоже стали «другой стороной».",
+                    "Я всё чаще думаю... Может быть, туннели копают не для войны. Может быть, война существует только потому, что уже выкопаны туннели?",
+                    "Сегодня старый шахтёр сказал: — Любой туннель когда-нибудь заканчивается. Я хотел спросить: «А если нет?» Но промолчал.",
+                    "Мне начинают доверять. Это почему-то пугает сильнее, чем раньше.",
+                    "Сегодня дали маршрут, по которому раньше ходил другой мальчик. Я спросил: — А где он? Мне ответили: — Теперь ты.",
+                    "Передовая стала тише. Не потому что стреляют меньше. А потому что людей осталось меньше.",
+                    "Сегодня видел человека, который сидел рядом со стеной и разговаривал сам с собой. Никто даже не удивился. Иногда молчание страшнее безумия.",
+                    "Мне кажется, я начал запоминать туннели лучше, чем лица.",
+                    "Сегодня мне сказали: — Завтра нужен ещё один рейс. Последний на этом направлении. Я согласился, даже не спросив почему.",
+                    "Я приготовил сумку заранее. Не знаю зачем. Наверное, чтобы утром не думать.",
+                    "Если эта запись останется здесь... значит, я её больше не заберу."
+                    ],
+                audio: null
+            }
+        ];
+        
+        const loreContainer = document.getElementById('loreEntriesGrid');
+        const locationSelect = document.getElementById('locationSelect');
+        const locationSelector = document.getElementById('loreLocationSelector');
+        let currentLoreFilter = 'all';
+        let currentLocation = 'all';
+        
+        function populateLocations() {
+            const locations = [...new Set(loreData.filter(e => e.location).map(e => e.location))].sort();
+            locationSelect.innerHTML = '<option value="all">Все локации</option>';
+            locations.forEach(loc => {
+                const opt = document.createElement('option');
+                opt.value = loc;
+                opt.textContent = loc;
+                locationSelect.appendChild(opt);
+            });
+        }
+        
+        function renderLoreEntries() {
+            loreContainer.innerHTML = '';
+            const filtered = loreData.filter(entry => {
+                if (currentLoreFilter === 'all') return true;
+                if (currentLoreFilter === 'global') return entry.category === 'global';
+                if (currentLoreFilter === 'local') {
+                    if (!entry.location) return false;
+                    if (currentLocation === 'all') return true;
+                    return entry.location === currentLocation;
+                }
+                return false;
+            });
+        
+            if (filtered.length === 0) {
+                loreContainer.innerHTML = '<p style="color:#aaa; text-align:center;">Нет записей</p>';
+                return;
+            }
+        
+            filtered.forEach(entry => {
+                const card = document.createElement('div');
+                card.className = 'lore-entry-card';
+        
+                // Заголовок + бейдж
+                const header = document.createElement('div');
+                header.className = 'lore-entry-header';
+                const titleEl = document.createElement('div');
+                titleEl.className = 'lore-entry-title';
+                titleEl.textContent = entry.title;
+                const badge = document.createElement('span');
+                badge.className = 'lore-entry-badge' + (entry.category === 'local' ? ' local' : '');
+                badge.textContent = entry.category === 'global' ? 'Глобальный' : (entry.location || 'Локальный');
+                header.appendChild(titleEl);
+                header.appendChild(badge);
+        
+                const textContainer = document.createElement('div');
+                textContainer.className = 'lore-entry-text';
+                
+                const paragraphs = Array.isArray(entry.text) ? entry.text : [entry.text];
+                paragraphs.forEach(pText => {
+                    const p = document.createElement('p');
+                    p.textContent = pText;
+                    textContainer.appendChild(p);
+                });
+        
+                card.appendChild(header);
+                card.appendChild(textContainer);
+                
+                // Галерея изображений
+                if (entry.images) {
+                    const imgs = Array.isArray(entry.images) ? entry.images : [entry.images];
+                
+                    const gallery = document.createElement('div');
+                    gallery.className = 'lore-gallery';
+                
+                    const track = document.createElement('div');
+                    track.className = 'lore-gallery-track';
+                    imgs.forEach(src => {
+                        const slide = document.createElement('div');
+                        slide.className = 'lore-gallery-slide';
+                        const img = document.createElement('img');
+                        img.src = src;
+                        img.alt = entry.title;
+                        slide.appendChild(img);
+                        track.appendChild(slide);
+                    });
+                
+                    gallery.appendChild(track);
+                
+                    // Точки (если >1)
+                    if (imgs.length > 1) {
+                        const dots = document.createElement('div');
+                        dots.className = 'lore-gallery-dots';
+                        let currentImg = 0;
+                
+                        imgs.forEach((_, i) => {
+                            const dot = document.createElement('span');
+                            dot.className = 'lore-gallery-dot' + (i === 0 ? ' active' : '');
+                            dot.addEventListener('click', e => {
+                                e.stopPropagation();
+                                currentImg = i;
+                                track.style.transform = `translateX(-${i * 100}%)`;
+                                dots.querySelectorAll('.lore-gallery-dot').forEach((d, j) => {
+                                    d.classList.toggle('active', j === i);
+                                });
+                            });
+                            dots.appendChild(dot);
+                        });
+                
+                        // Свайп на таче (простой)
+                        let touchStartX = 0;
+                        track.addEventListener('touchstart', e => {
+                            touchStartX = e.touches[0].clientX;
+                        }, { passive: true });
+                        track.addEventListener('touchend', e => {
+                            const diff = touchStartX - e.changedTouches[0].clientX;
+                            if (Math.abs(diff) > 40) {
+                                e.stopPropagation();
+                                if (diff > 0 && currentImg < imgs.length - 1) {
+                                    currentImg++;
+                                } else if (diff < 0 && currentImg > 0) {
+                                    currentImg--;
+                                }
+                                track.style.transform = `translateX(-${currentImg * 100}%)`;
+                                dots.querySelectorAll('.lore-gallery-dot').forEach((d, j) => {
+                                    d.classList.toggle('active', j === currentImg);
+                                });
+                            }
+                        });
+                
+                        gallery.appendChild(dots);
+                    }
+                
+                    card.appendChild(gallery);
+                }
+        
+                // Аудиоплеер
+                if (entry.audio) {
+                    const tracks = Array.isArray(entry.audio)
+                        ? entry.audio
+                        : [{ title: null, src: entry.audio }];
+                    let currentTrack = 0;
+                    let isPlaying = false;
+        
+                    const audioEl = document.createElement('audio');
+                    audioEl.className = 'lore-audio-hidden';
+                    audioEl.preload = 'metadata';
+        
+                    const player = document.createElement('div');
+                    player.className = 'lore-audio-player';
+        
+                    const playBtn = document.createElement('button');
+                    playBtn.className = 'lore-audio-play-btn';
+                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
+        
+                    const progressContainer = document.createElement('div');
+                    progressContainer.className = 'lore-audio-progress-container';
+                    const progressBar = document.createElement('div');
+                    progressBar.className = 'lore-audio-progress-bar';
+                    progressContainer.appendChild(progressBar);
+        
+                    const timeDisplay = document.createElement('div');
+                    timeDisplay.className = 'lore-audio-time';
+        
+                    // Регулятор громкости
+                    const volumeContainer = document.createElement('div');
+                    volumeContainer.className = 'lore-audio-volume';
+                    const volumeIcon = document.createElement('i');
+                    volumeIcon.className = 'fas fa-volume-up';
+                    const volumeSlider = document.createElement('input');
+                    volumeSlider.type = 'range';
+                    volumeSlider.min = '0';
+                    volumeSlider.max = '1';
+                    volumeSlider.step = '0.05';
+                    volumeSlider.value = audioEl.volume;   // по умолчанию 1
+                    
+                    // Меняем иконку при крайних значениях
+                    volumeSlider.addEventListener('input', () => {
+                        audioEl.volume = volumeSlider.value;
+                        if (volumeSlider.value == 0) {
+                            volumeIcon.className = 'fas fa-volume-mute';
+                        } else if (volumeSlider.value < 0.5) {
+                            volumeIcon.className = 'fas fa-volume-down';
+                        } else {
+                            volumeIcon.className = 'fas fa-volume-up';
+                        }
+                    });
+                    volumeContainer.appendChild(volumeIcon);
+                    volumeContainer.appendChild(volumeSlider);
+                    
+                    player.appendChild(playBtn);
+                    player.appendChild(volumeContainer);     // ← добавили между кнопкой и прогрессом
+                    player.appendChild(progressContainer);
+                    player.appendChild(timeDisplay);
+                    player.appendChild(audioEl);
+        
+                    let trackInfo = null;
+                    let prevBtn, nextBtn, trackTitle;
+        
+                    if (tracks.length > 1) {
+                        trackInfo = document.createElement('div');
+                        trackInfo.className = 'lore-audio-track-info';
+                        prevBtn = document.createElement('button');
+                        prevBtn.className = 'lore-audio-track-btn';
+                        prevBtn.innerHTML = '◀';
+                        nextBtn = document.createElement('button');
+                        nextBtn.className = 'lore-audio-track-btn';
+                        nextBtn.innerHTML = '▶';
+                        trackTitle = document.createElement('span');
+                        trackTitle.textContent = tracks[0].title || 'Трек 1';
+                        trackInfo.appendChild(prevBtn);
+                        trackInfo.appendChild(trackTitle);
+                        trackInfo.appendChild(nextBtn);
+                        player.appendChild(trackInfo);
+                    }
+        
+                    function loadTrack(index) {
+                        currentTrack = index;
+                        const t = tracks[index];
+                        audioEl.src = t.src;
+                        if (trackTitle) trackTitle.textContent = t.title || `Трек ${index + 1}`;
+                        progressBar.style.width = '0%';
+                        timeDisplay.textContent = '0:00 / 0:00';
+                        if (isPlaying) audioEl.play().catch(() => {});
+                    }
+        
+                    // Play/Pause
+                    playBtn.addEventListener('click', () => {
+                        if (isPlaying) audioEl.pause();
+                        else audioEl.play();
+                    });
+                    audioEl.addEventListener('play', () => {
+                        isPlaying = true;
+                        playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    });
+                    audioEl.addEventListener('pause', () => {
+                        isPlaying = false;
+                        playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    });
+                    audioEl.addEventListener('ended', () => {
+                        if (tracks.length > 1 && currentTrack < tracks.length - 1) {
+                            loadTrack(currentTrack + 1);
+                        } else {
+                            isPlaying = false;
+                            playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                        }
+                    });
+                    audioEl.addEventListener('timeupdate', () => {
+                        const cur = audioEl.currentTime;
+                        const dur = audioEl.duration || 0;
+                        progressBar.style.width = (dur ? (cur / dur) * 100 : 0) + '%';
+                        const fmt = t => {
+                            const m = Math.floor(t / 60);
+                            const s = Math.floor(t % 60);
+                            return m + ':' + (s < 10 ? '0' : '') + s;
+                        };
+                        timeDisplay.textContent = fmt(cur) + ' / ' + fmt(dur);
+                    });
+                    audioEl.addEventListener('loadedmetadata', () => {
+                        const fmt = t => {
+                            const m = Math.floor(t / 60);
+                            const s = Math.floor(t % 60);
+                            return m + ':' + (s < 10 ? '0' : '') + s;
+                        };
+                        timeDisplay.textContent = '0:00 / ' + fmt(audioEl.duration);
+                    });
+                    progressContainer.addEventListener('click', e => {
+                        const rect = progressContainer.getBoundingClientRect();
+                        const ratio = (e.clientX - rect.left) / rect.width;
+                        if (audioEl.duration) audioEl.currentTime = ratio * audioEl.duration;
+                    });
+        
+                    // Переключение треков
+                    if (tracks.length > 1) {
+                        prevBtn.addEventListener('click', e => {
+                            e.stopPropagation();
+                            if (currentTrack > 0) loadTrack(currentTrack - 1);
+                        });
+                        nextBtn.addEventListener('click', e => {
+                            e.stopPropagation();
+                            if (currentTrack < tracks.length - 1) loadTrack(currentTrack + 1);
+                        });
+                    }
+        
+                    loadTrack(0);
+                    card.appendChild(player);
+                }
+        
+                loreContainer.appendChild(card);
+            });
+        }
+        
+        // Подразделы
+        document.querySelectorAll('.lore-subtab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.lore-subtab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                currentLoreFilter = tab.getAttribute('data-lore-category');
+                locationSelector.style.display = currentLoreFilter === 'local' ? 'flex' : 'none';
+                renderLoreEntries();
+            });
+        });
+        
+        locationSelect.addEventListener('change', () => {
+            currentLocation = locationSelect.value;
+            renderLoreEntries();
+        });
+        
+        populateLocations();
+        renderLoreEntries();
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание организации | Timefall</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Unbounded:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../js/banner-builder.js"></script>
+</head>
+<body style="background: transparent; overflow-y: auto; padding: 0;">
+    <div class="page-content">
+        <div style="margin-bottom: 1rem;">
+            <a href="/pages/organizations.html" style="color:#22ff88; text-decoration:none;">
+                <i class="fas fa-arrow-left"></i> Назад к организациям
+            </a>
+        </div>
+        <div class="glass-card">
+            <h1><i class="fas fa-plus-circle"></i> Создание организации</h1>
+            <div id="bannerBuilderContainer"></div>
+            <div style="margin-top: 1.5rem;">
+                <label style="display: block; margin-bottom: 0.3rem; color: #aaa;">Название</label>
+                <input type="text" id="orgName" maxlength="25" required style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(34,255,136,0.3); border-radius:8px; padding:0.6rem 1rem; color:#fff;">
+            </div>
+            <div style="margin-top:1rem;">
+                <label style="display: block; margin-bottom: 0.3rem; color: #aaa;">Описание</label>
+                <textarea id="orgDesc" rows="4" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(34,255,136,0.3); border-radius:8px; padding:0.6rem 1rem; color:#fff; resize:vertical;"></textarea>
+            </div>
+            <div class="form-group" style="margin-top:1rem;">
+                <label style="display: block; margin-bottom: 0.3rem; color: #aaa;">Краткое описание (до 120 символов)</label>
+                <textarea id="orgShortDesc" maxlength="120" rows="2" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(34,255,136,0.3); border-radius:8px; padding:0.6rem 1rem; color:#fff; resize:vertical;"></textarea>
+            </div>
+            <div style="margin-top:1rem;">
+                <label style="display: block; margin-bottom: 0.3rem; color: #aaa;">Тип вступления</label>
+                <select id="joinType" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(34,255,136,0.3); border-radius:8px; padding:0.6rem 1rem; color:#fff;">
+                    <option value="open">Открытая (свободное вступление)</option>
+                    <option value="request">По заявкам</option>
+                </select>
+            </div>
+            <button id="submitBtn" class="btn-green" style="width:100%; margin-top:1.5rem;">
+                <i class="fas fa-check"></i> Создать организацию
+            </button>
+        </div>
+    </div>
+    <script>
+        let builder;
+        document.addEventListener('DOMContentLoaded', () => {
+            builder = initBannerBuilder('bannerBuilderContainer', null);
+            document.getElementById('submitBtn').addEventListener('click', createOrg);
+        });
+        async function createOrg() {
+            const name = document.getElementById('orgName').value.trim();
+            if (name.length < 2) { alert('Название должно быть от 2 символов'); return; }
+            const d = builder.getData();
+            d.action = 'create';
+            d.name = name;
+            d.description = document.getElementById('orgDesc').value.trim();
+            d.short_description = document.getElementById('orgShortDesc').value.trim();
+            d.join_type = document.getElementById('joinType').value;
+            const resp = await fetch('/api/organizations.php', {
+                method:'POST', headers:{'Content-Type':'application/json'}, credentials:'include',
+                body: JSON.stringify(d)
+            });
+            const res = await resp.json();
+            if(res.success) window.location.href = '/pages/organizations.html';
+            else alert(res.error);
+        }
+    </script>
+</body>
+</html>

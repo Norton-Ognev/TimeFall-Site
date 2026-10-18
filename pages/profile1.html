@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет | Timefall</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Unbounded:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Переопределяем стили для страницы без бокового меню */
+        body {
+            overflow: auto;
+            height: auto;
+            min-height: 100vh;
+        }
+        
+        .app-layout {
+            display: block;
+            height: auto;
+            min-height: 100vh;
+        }
+        
+        .main-content {
+            margin-left: 100;
+            padding: 2rem;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        /* Оставляем только нужные стили для личного кабинета */
+        .warn-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .warn-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .warn-circle.active {
+            background: #ff4444;
+            border-color: #ff4444;
+            box-shadow: 0 0 15px rgba(255, 68, 68, 0.5);
+        }
+        
+        .warn-circle.warning {
+            background: #ffaa00;
+            border-color: #ffaa00;
+            box-shadow: 0 0 10px rgba(255, 170, 0, 0.4);
+        }
+        
+        .banned-message {
+            background: rgba(255, 68, 68, 0.2);
+            border: 1px solid #ff4444;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: 1rem;
+            color: #ff8888;
+            text-align: center;
+        }
+        
+        .warning-message {
+            background: rgba(255, 170, 0, 0.1);
+            border: 1px solid #ffaa00;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: 1rem;
+            color: #ffaa00;
+            text-align: center;
+        }
+        
+        .subscription-badge, .pass-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .subscription-active, .pass-active {
+            background: rgba(34, 255, 136, 0.2);
+            color: #22ff88;
+            border: 1px solid #22ff88;
+        }
+        
+        .subscription-inactive, .pass-inactive {
+            background: rgba(255, 68, 68, 0.2);
+            color: #ff8888;
+            border: 1px solid #ff4444;
+        }
+        
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            color: #aaa;
+            font-weight: 500;
+        }
+        
+        .info-value {
+            color: #fff;
+            font-weight: 600;
+        }
+        
+        .btn-buy {
+            background: #22ff88;;
+            color: #000;
+            margin-top: 1rem;
+            width: 100%;
+        }
+        
+        .btn-buy:hover {
+            background: #22ff88;;
+            box-shadow: 0 0 12px #1abd66;;
+        }
+        
+        .logout-btn {
+            background: rgba(255, 68, 68, 0.2);
+            border: 1px solid #ff4444;
+            color: #ff8888;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(255, 68, 68, 0.4);
+            box-shadow: 0 0 12px rgba(255, 68, 68, 0.3);
+        }
+        
+        .welcome-text {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .welcome-text h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .welcome-text small {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        /* Адаптация для мобильных */
+        @media (max-width: 800px) {
+            .main-content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-bg"></div>
+    
+    <div class="app-layout">
+        <main class="main-content">
+            <div id="profileContent">
+                <div class="glass-card" style="text-align: center;">
+                    <i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: #22ff88;"></i>
+                    <p>Загрузка данных...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        async function logout() {
+            if (confirm('Вы уверены, что хотите выйти?')) {
+                try {
+                    await fetch('/api/logout.php', { method: 'POST', credentials: 'include' });
+                    window.location.href = '/login.html';
+                } catch(e) {
+                    window.location.href = '/login.html';
+                }
+            }
+        }
+        
+        async function loadProfile() {
+            try {
+                const response = await fetch('/api/user-data.php', {
+                    credentials: 'include'
+                });
+                const data = await response.json();
+                
+                if (!data.success) {
+                    window.location.href = '/login.html';
+                    return;
+                }
+                
+                const user = data.user;
+                renderProfile(user);
+                
+            } catch(e) {
+                console.error('Ошибка загрузки профиля', e);
+                window.location.href = '/login.html';
+            }
+        }
+        
+        function renderProfile(user) {
+            const container = document.getElementById('profileContent');
+            
+            // Варны
+            let warnHtml = '';
+            for (let i = 1; i <= 3; i++) {
+                let status = '';
+                if (user.is_banned) {
+                    status = 'active';
+                } else if (i <= user.warn_count) {
+                    status = user.warn_count >= 2 ? 'active' : 'warning';
+                }
+                warnHtml += `<div class="warn-circle ${status}"></div>`;
+            }
+            
+            // Статус подписки
+            const hasSubscription = user.remaining_days > 0;
+            const subscriptionHtml = hasSubscription ? `
+                <span class="subscription-badge subscription-active">
+                    <i class="fas fa-check-circle"></i> Подписка активна
+                </span>
+                <div class="info-row">
+                    <span class="info-label">Осталось дней:</span>
+                    <span class="info-value">${user.remaining_days} дн.</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Действует до:</span>
+                    <span class="info-value">${user.subscription_valid_until || '—'}</span>
+                </div>
+            ` : `
+                <span class="subscription-badge subscription-inactive">
+                    <i class="fas fa-times-circle"></i> Нет активной подписки
+                </span>
+                <div class="info-row">
+                    <span class="info-label">Дней подписки:</span>
+                    <span class="info-value">0</span>
+                </div>
+            `;
+            
+            // Статус проходки
+            const passHtml = user.has_pass ? `
+                <span class="pass-badge pass-active">
+                    <i class="fas fa-check-circle"></i> Проходка куплена
+                </span>
+                <div class="info-row">
+                    <span class="info-label">Статус:</span>
+                    <span class="info-value">Доступ на сервер есть</span>
+                </div>
+            ` : `
+                <span class="pass-badge pass-inactive">
+                    <i class="fas fa-clock"></i> Проходка не куплена
+                </span>
+                <button class="btn-green btn-buy" onclick="buyPass()">
+                    <i class="fas fa-shopping-cart"></i> Купить проходку
+                </button>
+            `;
+            
+            // Сообщения о варнах/бане
+            let warnMessageHtml = '';
+            if (user.is_banned || user.warn_count >= 3) {
+                warnMessageHtml = `
+                    <div class="banned-message">
+                        <i class="fas fa-gavel"></i> 
+                        <strong>Ваш аккаунт забанен на сервере!</strong>
+                        <br>Причина: Превышен лимит варнов (3/3)
+                    </div>
+                `;
+            } else if (user.warn_count > 0) {
+                warnMessageHtml = `
+                    <div class="warning-message">
+                        <i class="fas fa-exclamation-triangle"></i> 
+                        <strong>Внимание!</strong> У вас ${user.warn_count}/3 варнов
+                    </div>
+                `;
+            }
+            
+            container.innerHTML = `
+                <!-- Приветствие -->
+                <div class="welcome-text">
+                    <h1>Добро пожаловать, ${user.minecraft_nick}!</h1>
+                    <small>Дата регистрации: ${user.created_at}</small>
+                </div>
+                
+                <!-- Основная информация -->
+                <div class="glass-card">
+                    <h2>Основная информация</h2>
+                    <div class="info-row">
+                        <span class="info-label">ID:</span>
+                        <span class="info-value">#${user.id}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Ник в Minecraft:</span>
+                        <span class="info-value">${user.minecraft_nick}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Email:</span>
+                        <span class="info-value">${user.email}</span>
+                    </div>
+                    <div class="info-row" id="orgInfoContainer" style="display:block; padding-top:0.5rem;">
+                    </div>
+                </div>
+                
+                <!-- Подписка -->
+                <div class="glass-card">
+                    <h2>Подписка</h2>
+                    ${subscriptionHtml}
+                </div>
+                
+                <!-- Цвет ника -->
+                <div class="glass-card">
+                    <h2>Цвет ника в Discord</h2>
+                    <span class="info-label" style="display: block; margin-bottom: 1rem;">(Доступно только при активной подписке)</span>
+                    <div class="info-row">
+                        <span class="info-label">Текущий:</span>
+                        <span class="info-value">
+                            ${user.nick_colour ? `<span style="color:${colourToHex(user.nick_colour)};">${user.nick_colour}</span>` : 'Не выбран'}
+                        </span>
+                    </div>
+                    <div style="display:flex;gap:0.5rem;margin-top:1rem;flex-wrap:wrap;justify-content:center;">
+                        ${[
+                            { name: 'голубой', hex: '#22ddff' },
+                            { name: 'синий', hex: '#4488ff' },
+                            { name: 'фиолетовый', hex: '#aa44ff' },
+                            { name: 'розовый', hex: '#ff44aa' },
+                            { name: 'оранжевый', hex: '#ff8800' },
+                            { name: 'жёлтый', hex: '#ffdd00' },
+                            { name: 'зелёный', hex: '#22ff88' }
+                        ].map(c => `
+                            <div onclick="changeNickColour('${c.name}')"
+                                 title="${c.name}"
+                                 style="width:36px;height:36px;background:${c.hex};border-radius:50%;cursor:pointer;
+                                        border:3px solid ${user.nick_colour === c.name ? '#fff' : 'transparent'};
+                                        transition:0.2s;box-shadow:0 0 8px ${c.hex}44;">
+                            </div>
+                        `).join('')}
+                        <div onclick="changeNickColour(null)"
+                             title="Без роли"
+                             style="width:36px;height:36px;background:#555;border-radius:50%;cursor:pointer;
+                                    border:3px solid ${user.nick_colour === null ? '#fff' : 'transparent'};
+                                    display:flex;align-items:center;justify-content:center;color:#aaa;font-size:14px;">
+                             ✕
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Проходка на сервер -->
+                <div class="glass-card">
+                    <h2>Проходка на сервер</h2>
+                    ${passHtml}
+                </div>
+                
+                <!-- Варны -->
+                <div class="glass-card">
+                    <h2>Варны</h2>
+                    <div class="warn-container">
+                        ${warnHtml}
+                    </div>
+                    ${warnMessageHtml}
+                </div>
+            `;
+            loadOrgInfo();
+        }
+        
+        function buyPass() {
+            window.location.href = 'pass.html';
+        }
+        
+        loadProfile();
+        
+        function colourToHex(name) {
+            const map = {
+                'голубой': '#22ddff',
+                'синий': '#4488ff',
+                'фиолетовый': '#aa44ff',
+                'розовый': '#ff44aa',
+                'оранжевый': '#ff8800',
+                'жёлтый': '#ffdd00',
+                'зелёный': '#22ff88'
+            };
+            return map[name] || '#fff';
+        }
+        
+        async function changeNickColour(colour) {
+            try {
+                const resp = await fetch('/api/update-nick-colour.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({ nick_colour: colour })
+                });
+                const data = await resp.json();
+                if (data.success) {
+                    loadProfile();
+                } else {
+                    alert(data.error || 'Ошибка');
+                }
+            } catch(e) {
+                alert('Ошибка соединения');
+            }
+        }
+        async function loadOrgInfo() {
+            try {
+                const resp = await fetch('/api/organizations.php?action=my_orgs', { credentials: 'include' });
+                const data = await resp.json();
+                if (!data.success) return;
+        
+                const container = document.getElementById('orgInfoContainer');
+                if (!container) return;
+        
+                const total = data.total;
+                let html = `<div class="info-row"><span class="info-label">Участвует в организациях:</span><span class="info-value">${total}/5</span></div>`;
+        
+                if (data.memberships.length > 0) {
+                    const names = data.memberships.map(m =>
+                        `<span style="margin-right:6px;"><a href="/pages/organization.html?id=${m.id}" style="color:#22ff88; text-decoration:none;">${escapeHtml(m.name)}</a></span>`
+                    ).join(',  ');
+                    html += `<div style="margin-top:1rem;">
+                        <span class="info-label">Организации:</span>
+                        <div class="info-value" style="margin-top:4px; word-break:break-word; overflow-wrap:anywhere;">
+                            ${names}
+                        </div>
+                    </div>`;
+                } else {
+                    html += '<p style="color:#aaa; margin-top:0.3rem;">Не состоит в организациях</p>';
+                }
+        
+                container.innerHTML = html;
+            } catch(e) {
+                console.error(e);
+            }
+        }
+        
+        // Вызов после загрузки профиля
+        // В функции renderProfile в самом конце добавить вызов:
+        // loadOrgInfo();
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>

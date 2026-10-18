@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проходка и подписка | Timefall</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Unbounded:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body style="background: transparent; overflow-y: auto; padding: 0;">
+    <div class="page-content">
+        <div class="glass-card">
+            <h1><i class="fas fa-crown"></i> Проходка и Подписка (Сервер заморожен)</h1>
+            <p style="margin-bottom: 2rem;">Выберите подходящий вариант и начни своё путешествие на проекте! <strong>После оплаты обязательно перейди в наш Discord!<strong></p>
+            
+            <div class="flex-row" style="gap: 2rem; justify-content: center; margin-bottom: 2rem;">
+                <div class="plan-card">
+                    <span class="badge" style="position: absolute; top: 10px; right: -3px;">🔥 Хит</span>
+                    <i class="fas fa-star" style="font-size: 3rem; color:#22ff88;"></i>
+                    <h3 style="margin: 1.8rem 0 0.5rem;">Проходка на сервер</h3>
+                    <p style="margin: 1rem 0 0.5rem;">Только лицензия!</p>
+                    <p>300 ₽</p>
+                    <ul style="text-align: left; margin: 1rem 0; list-style: none; text-align: center;">
+                        <li> Обязательно. Единоразово</li>
+                        <li><i class="fas fa-check" style="color:#22ff88;"></i> Открывает доступ к миру Timefall навсегда</li>
+                    </ul>
+                    <!--<button class="btn-green" onclick="showPurchaseModal('pass')">
+                        <i class="fas fa-shopping-cart"></i> Купить сейчас
+                    </button>-->
+                    <!--<button class="btn-green" onclick="buyItem('pass')">Купить сейчас</button>-->
+                </div>
+                
+                <div class="plan-card">
+                    <img src="../img/time_plus.svg" alt="Time+" width="80" height="80" style="display: block; margin: -0.4rem auto 0.5rem;">
+                    <h3 style="margin: 0.4rem 0 0.5rem;">Подписка Time+</h3>
+                    <p>200 ₽/мес</p>
+                    <ul style="text-align: left; margin: 1rem 0; list-style: none;">
+                        <li><i class="fas fa-check" style="color:#22ff88;"></i> Кастомизания ников на дискорд сервере</li>
+                        <li><i class="fas fa-check" style="color:#22ff88;"></i> Иконка в табе</li>
+                        <li><i class="fas fa-check" style="color:#22ff88;"></i> Возможность записывать кастомные пластинки</li>
+                        <li><i class="fas fa-check" style="color:#22ff88;"></i> Возможность записывать голосовые в чате на сервере</li>
+                        <li><i class="fas fa-check" style="color:#22ff88;"></i> Эксклюзивный канал с контентов "В разработке"</li>
+                    </ul>
+                    <!--<button class="btn-green" onclick="showPurchaseModal('subscription')">
+                        <i class="fas fa-shopping-cart"></i> Оформить
+                    </button>-->
+                    <!--<button class="btn-green" onclick="buyItem('subscription')">Оформить</button>-->
+                </div>
+                
+                <div class="plan-card">
+                    <i class="fas fa-infinity" style="font-size: 3.1rem; color:#22ff88;"></i>
+                    <h3 style="margin: 1.8rem 0 0.5rem;">Разбан на сервере</h3>
+                    <p>1000 ₽</p>
+                    <ul style="text-align: left; margin: 1rem 0; list-style: none; text-align: center;">
+                        <li>Покупается после 3 варнов и постоянного бана аккаунта</li>
+                        <li>При перманентном бане купить разбан невозможно</li>
+                    </ul>
+                    <!--<button class="btn-green" onclick="showPurchaseModal('unban')">
+                        <i class="fas fa-shopping-cart"></i> Оформить
+                    </button>-->
+                    <!--<button class="btn-green" onclick="buyItem('unban')">Оформить</button>-->
+                </div>
+            </div>
+            
+            <div style="background: rgba(50, 145, 94, 0.123); border-radius: 20px; padding: 1.5rem; margin-top: 1rem;">
+                <h3><i class="fas fa-gift"></i> FAQ</h3>
+                <div class="content-grid" style="margin-top: 1rem;">
+                    <div class="faq-section">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                            Если я не из России, то как мне получить доступ на сервер?
+                            <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                            <p>Переходите в наш Discord сервер и создайте тикет, сказав, что вы из другой страны. Мы поможем в решении данной проблемы.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                            Если я куплю проходку сейчас, нужно ли будет платить снова через месяц или через год?
+                            <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                            <p>Нет. Проходка — это единоразовый платёж. Вы получаете доступ к серверу и всем его будущим сезонам навсегда. Мы против системы, где нужно постоянно платить за вход.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                            Что дает подписка? Это «донат» на который я получу алмазы или оружие?
+                            <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                            <p>Подписка — это исключительно добровольная поддержка проекта. Она дает только косметические изменения и удобства (пластинки, иконки, роли в Discord), которые никак не влияют на баланс сил в игре. Никакого «доната» с мечами или ресурсами на сервере нет и не будет.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                            Зачем мне покупать проходку, если сервер и так можно сделать бесплатным?
+                            <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                            <p>Мы ценим ваше время и комфорт. Платная проходка — это самый эффективный способ отсечь гриферов, токсичных игроков и массовые боты. Это позволяет нам содержать качественный хостинг и создавать для вас тот самый уникальный сюжет и ивенты, не отвлекаясь на сбор донатов.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                            Могу ли я продлить подписку досрочно? Сгорают ли дни?
+                            <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                            <p>Да, вы можете продлить подписку в любой момент. Сроки суммируются. Если у вас уже есть активный месяц, и вы оплачиваете следующий, к оставшемуся времени прибавится еще 30 дней.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                            Что будет с моей подпиской, если я временно перестану играть?
+                            <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                            <p>Подписка является ежемесячной. Если вы не играете, дни продолжают идти, так как это не «игровое время», а календарный месяц.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                            Можно ли вернуть деньги?
+                            <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                            <p>Цифровые товары (доступ к серверу) возврату не подлежат согласно законодательству, так как услуга считается оказанной в момент активации доступа. Однако если вы столкнулись с технической проблемой (доступ не пришел), обязательно напишите нам в поддержку — мы поможем.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+            // Аккордеон для FAQ
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+                });
+            });
+            </script>
+            
+            <p style="margin-top: 2rem; text-align: center; color: #aaa;">Все покупки автоматически применяются к аккаунту. Поддержка 24/7 в Discord.</p>
+        </div>
+    </div>
+    <script>
+        // Проверка авторизации перед покупкой
+        async function checkAuthBeforeBuy() {
+          try {
+            const resp = await fetch('/api/check-auth.php', { credentials: 'include' });
+            const data = await resp.json();
+            return data.authenticated;
+          } catch(e) {
+            return false;
+          }
+        }
+        async function buyItem(type) {
+            const isAuth = await checkAuthBeforeBuy();
+            if (!isAuth) {
+                sessionStorage.setItem('pending_purchase', type);
+                window.top.location.href = '/login.html';
+                return;
+            }
+            if (type === 'subscription') {
+                const choice = await showSubscriptionModal();
+                if (choice === '1m') type = 'subscription_1m';
+                else if (choice === '3m') type = 'subscription_3m';
+                else return;
+            }
+            
+            try {
+                const resp = await fetch('/api/create-payment.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({ item_type: type })
+                });
+                const data = await resp.json();
+                
+                if (data.success) {
+                    window.open(data.confirmation_url, '_blank');
+                } else {
+                    alert(data.error || 'Ошибка создания платежа');
+                }
+            } catch(e) {
+                alert('Ошибка соединения с сервером');
+            }
+        }
+        
+        function showSubscriptionModal() {
+            return new Promise(resolve => {
+                const overlay = document.createElement('div');
+                overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:9999;';
+                overlay.innerHTML = `
+                    <div class="glass-card" style="text-align:center;min-width:300px;">
+                        <h3>Выберите срок подписки</h3>
+                        <button class="btn-green" style="margin:0.5rem;width:80%;">1 месяц — 200 ₽</button>
+                        <button class="btn-green" style="margin:0.5rem;width:80%;">3 месяца — 550 ₽</button>
+                        <br>
+                        <button class="btn-cancel" style="margin-top:1rem;">Отмена</button>
+                    </div>
+                `;
+                document.body.appendChild(overlay);
+                
+                overlay.querySelectorAll('.btn-green')[0].onclick = () => { overlay.remove(); resolve('1m'); };
+                overlay.querySelectorAll('.btn-green')[1].onclick = () => { overlay.remove(); resolve('3m'); };
+                overlay.querySelector('.btn-cancel').onclick = () => { overlay.remove(); resolve(null); };
+            });
+        }
+    </script>
+    
+    <!-- Модальное окно покупки -->
+    <div id="purchase-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); backdrop-filter:blur(6px); z-index:10000; align-items:center; justify-content:center;" onclick="closePurchaseModal(event)">
+        <div class="glass-card" style="max-width:440px; width:90%; text-align:center; padding:2rem;" onclick="event.stopPropagation()">
+            <div id="modal-icon" style="font-size:3rem; color:#22ff88; margin-bottom:0.8rem;"></div>
+            <h3 style="margin-bottom:0.3rem;">Покупка временно недоступна на сайте</h3>
+            <div id="modal-product-name" style="display:inline-block; background:rgba(34,255,136,0.1); color:#22ff88; font-weight:700; padding:5px 16px; border-radius:20px; margin:0.5rem 0 1rem;"></div>
+            <p style="color:#aaa; font-size:0.92rem; line-height:1.6; margin-bottom:0.7rem;">
+                Извините, на данный момент покупка возможна только в нашем <strong style="color:#fff;">Discord-канале</strong>.
+            </p>
+            <div style="background:#111; border:1px solid #333; border-radius:10px; padding:12px 16px; font-size:0.88rem; color:#ccc; margin:0.8rem 0 1.4rem; line-height:1.5;">
+                <i class="fas fa-ticket-alt" style="color:#22ff88; margin-right:6px;"></i>
+                Перейдите в Discord и создайте тикет с текстом:<br>
+                <strong id="modal-ticket-text" style="color:#22ff88;"></strong><br>
+                и укажите ваш <strong style="color:#fff;">игровой ник</strong>.
+            </div>
+            <p id="modal-price" style="font-size:0.82rem; color:#aaa; margin-bottom:1.2rem;"></p>
+            <button onclick="closePurchaseModalDirect()" style="background:transparent; border:1px solid #555; color:#ccc; padding:10px 28px; border-radius:50px; font-size:0.9rem; cursor:pointer; transition:all 0.2s; font-family:inherit;"
+                    onmouseover="this.style.borderColor='#999'; this.style.color='#fff';"
+                    onmouseout="this.style.borderColor='#555'; this.style.color='#ccc';">
+                <i class="fas fa-times"></i> Закрыть
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        const productData = {
+            pass:          { name: 'Проходка на сервер', icon: 'fa-star',    price: '300 ₽' },
+            subscription:  { name: 'Подписка Time+',     icon: 'fa-crown',   price: '200 ₽/мес' },
+            unban:         { name: 'Разбан на сервере',  icon: 'fa-infinity',price: '1000 ₽' },
+        };
+    
+        // Сохраняем оригинальные стили перед открытием
+        var savedStyles = {};
+    
+        function showPurchaseModal(key) {
+            var p = productData[key];
+            document.getElementById('modal-icon').innerHTML = '<i class="fas ' + p.icon + '"></i>';
+            document.getElementById('modal-product-name').textContent = p.name;
+            document.getElementById('modal-ticket-text').textContent = '«Хочу купить ' + p.name + '»';
+            document.getElementById('modal-price').innerHTML = 'Стоимость: <strong style="color:#fff;">' + p.price + '</strong>';
+            
+            // Сохраняем текущие значения
+            savedStyles.bodyOverflow     = document.body.style.overflow;
+            savedStyles.bodyOverflowY    = document.body.style.overflowY;
+            savedStyles.htmlOverflow     = document.documentElement.style.overflow;
+            savedStyles.bodyPosition     = document.body.style.position;
+            savedStyles.bodyTop          = document.body.style.top;
+            
+            document.getElementById('purchase-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            document.body.style.overflowY = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+        }
+    
+        function closePurchaseModal(e) {
+            if (e.target.id === 'purchase-modal') closePurchaseModalDirect();
+        }
+    
+        function closePurchaseModalDirect() {
+            var modal = document.getElementById('purchase-modal');
+            if (modal) modal.style.display = 'none';
+            
+            // Восстанавливаем именно то, что было
+            document.body.style.overflow    = savedStyles.bodyOverflow || 'auto';
+            document.body.style.overflowY   = savedStyles.bodyOverflowY || 'auto';
+            document.documentElement.style.overflow = savedStyles.htmlOverflow || 'auto';
+            document.body.style.position    = savedStyles.bodyPosition || '';
+            document.body.style.top         = savedStyles.bodyTop || '';
+            
+            // Принудительно переопределяем для <body style="overflow-y: auto;">
+            document.body.style.setProperty('overflow-y', 'auto', 'important');
+        }
+    
+        // Закрытие по Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                var modal = document.getElementById('purchase-modal');
+                if (modal && modal.style.display === 'flex') {
+                    closePurchaseModalDirect();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

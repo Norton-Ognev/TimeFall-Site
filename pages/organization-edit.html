@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование организации | Timefall</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Unbounded:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../js/banner-builder.js"></script>
+</head>
+<body style="background: transparent; overflow-y: auto; padding: 0;">
+<div class="page-content">
+    <div style="margin-bottom: 1rem;">
+        <a id="backLink" href="#" style="color: #22ff88; text-decoration: none;">
+            <i class="fas fa-arrow-left"></i> Назад к организации
+        </a>
+    </div>
+    <div class="glass-card">
+        <h1><i class="fas fa-edit"></i> Редактирование организации</h1>
+        <div id="bannerBuilderContainer"></div>
+        <div style="margin-top: 1.5rem;">
+            <label style="display: block; margin-bottom: 0.3rem; color: #aaa;">Название</label>
+            <input type="text" id="orgName" maxlength="25" required style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(34,255,136,0.3); border-radius:8px; padding:0.6rem 1rem; color:#fff;">
+        </div>
+        <div style="margin-top:1rem;">
+            <label style="display: block; margin-bottom: 0.3rem; color: #aaa;">Описание</label>
+            <textarea id="orgDesc" rows="4" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(34,255,136,0.3); border-radius:8px; padding:0.6rem 1rem; color:#fff; resize:vertical;"></textarea>
+        </div>
+        <div class="form-group" style="margin-top:1rem;">
+            <label style="display: block; margin-bottom: 0.3rem; color: #aaa;">Краткое описание (до 120 символов, показывается в карточке)</label>
+            <textarea id="orgShortDesc" maxlength="120" rows="2" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(34,255,136,0.3); border-radius:8px; padding:0.6rem 1rem; color:#fff; resize:vertical; font-family: Montserrat, sans-serif;"></textarea>
+        </div>
+        <div style="margin-top:1rem;">
+            <label style="display: block; margin-bottom: 0.3rem; color: #aaa;">Тип вступления</label>
+            <select id="joinType" style="width:100%; background:rgba(0,0,0,0.5); border:1px solid rgba(34,255,136,0.3); border-radius:8px; padding:0.6rem 1rem; color:#fff;">
+                <option value="open">Открытая (свободное вступление)</option>
+                <option value="request">По заявкам</option>
+            </select>
+        </div>
+        <button id="submitBtn" class="btn-green" style="width:100%; margin-top:1.5rem;">
+            <i class="fas fa-save"></i> Сохранить изменения
+        </button>
+    </div>
+</div>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const orgId = urlParams.get('id');
+let builder;
+
+// Ссылка "Назад" должна вести на страницу организации
+document.getElementById('backLink').href = `/pages/organization.html?id=${orgId}`;
+
+async function loadData() {
+    try {
+        const resp = await fetch(`/api/organizations.php?action=get&id=${orgId}`, { credentials: 'include' });
+        const data = await resp.json();
+        if (!data.success || !data.userStatus.is_owner) {
+            alert('Нет доступа');
+            window.location.href = '/pages/organizations.html';
+            return;
+        }
+        const org = data.organization;
+        document.getElementById('orgName').value = org.name;
+        document.getElementById('orgDesc').value = org.description || '';
+        document.getElementById('orgShortDesc').value = org.short_description || '';
+        document.getElementById('joinType').value = org.join_type;
+
+        // Передаём в конструктор данные: baseColor и массив слоёв
+        const initData = {
+            banner_base_color: org.banner_base_color,
+            banner_patterns: org.banner_patterns ? JSON.parse(org.banner_patterns) : []
+        };
+        builder = initBannerBuilder('bannerBuilderContainer', initData);
+    } catch(e) {
+        console.error(e);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', loadData);
+
+document.getElementById('submitBtn').addEventListener('click', async () => {
+    const name = document.getElementById('orgName').value.trim();
+    if (!name || name.length < 2) { alert('Название должно быть от 2 символов'); return; }
+
+    const d = builder.getData();
+    d.action = 'update';
+    d.id = orgId;
+    d.name = name;
+    d.description = document.getElementById('orgDesc').value.trim();
+    d.short_description = document.getElementById('orgShortDesc').value.trim();
+    d.join_type = document.getElementById('joinType').value;
+
+    const resp = await fetch('/api/organizations.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify(d)
+    });
+    const res = await resp.json();
+    if (res.success) {
+        window.location.href = `/pages/organization.html?id=${orgId}`;
+    } else {
+        alert(res.error || 'Ошибка при сохранении');
+    }
+});
+</script>
+</body>
+</html>
