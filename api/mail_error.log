@@ -1,0 +1,134 @@
+=== 2026-05-20 22:19:53 ===
+Ошибка: SMTP Error: Could not authenticate.
+SMTP Error: SMTP Error: Could not authenticate.
+Debug log:
+SERVER -> CLIENT: 220 everfrost.from.sh
+CLIENT -> SERVER: EHLO timefall.ru
+SERVER -> CLIENT: 250-everfrost.from.sh Hello manerike.from.sh [141.8.192.15]
+250-SIZE 104857600
+250-8BITMIME
+250-AUTH PLAIN LOGIN
+250-STARTTLS
+250 HELP
+CLIENT -> SERVER: AUTH LOGIN
+SERVER -> CLIENT: 334 VXNlcm5hbWU6
+CLIENT -> SERVER: [credentials hidden]SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+CLIENT -> SERVER: [credentials hidden]SERVER -> CLIENT: 435 Unable to authenticate at present
+SMTP ERROR: Password command failed: 435 Unable to authenticate at present
+SMTP Error: Could not authenticate.CLIENT -> SERVER: QUIT
+SERVER -> CLIENT: 221 everfrost.from.sh closing connection
+SMTP Error: Could not authenticate.
+
+=== 2026-05-20 22:21:13 ===
+Ошибка: SMTP Error: Could not authenticate.
+SMTP Error: SMTP Error: Could not authenticate.
+Debug log:
+SERVER -> CLIENT: 220 everfrost.from.sh
+CLIENT -> SERVER: EHLO timefall.ru
+SERVER -> CLIENT: 250-everfrost.from.sh Hello manerike.from.sh [141.8.192.15]
+250-SIZE 104857600
+250-8BITMIME
+250-AUTH PLAIN LOGIN
+250-STARTTLS
+250 HELP
+CLIENT -> SERVER: AUTH LOGIN
+SERVER -> CLIENT: 334 VXNlcm5hbWU6
+CLIENT -> SERVER: [credentials hidden]SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+CLIENT -> SERVER: [credentials hidden]SERVER -> CLIENT: 435 Unable to authenticate at present
+SMTP ERROR: Password command failed: 435 Unable to authenticate at present
+SMTP Error: Could not authenticate.CLIENT -> SERVER: QUIT
+SERVER -> CLIENT: 221 everfrost.from.sh closing connection
+SMTP Error: Could not authenticate.
+
+=== 2026-05-20 22:23:29 ===
+Ошибка: SMTP Error: Could not authenticate.
+SMTP Error: SMTP Error: Could not authenticate.
+Debug log:
+SERVER -> CLIENT: 220 everfrost.from.sh
+CLIENT -> SERVER: EHLO timefall.ru
+SERVER -> CLIENT: 250-everfrost.from.sh Hello manerike.from.sh [141.8.192.15]
+250-SIZE 104857600
+250-8BITMIME
+250-AUTH PLAIN LOGIN
+250-STARTTLS
+250 HELP
+CLIENT -> SERVER: AUTH LOGIN
+SERVER -> CLIENT: 334 VXNlcm5hbWU6
+CLIENT -> SERVER: [credentials hidden]SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+CLIENT -> SERVER: [credentials hidden]SERVER -> CLIENT: 435 Unable to authenticate at present
+SMTP ERROR: Password command failed: 435 Unable to authenticate at present
+SMTP Error: Could not authenticate.CLIENT -> SERVER: QUIT
+SERVER -> CLIENT: 221 everfrost.from.sh closing connection
+SMTP Error: Could not authenticate.
+
+[2026-05-20 22:31:24] Ошибка: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+SMTP Error: SMTP Error: Could not connect to SMTP host. Failed to connect to server SMTP server error: Failed to connect to server SMTP code: 110 Additional SMTP info: Connection timed out
+To: crepo777@mail.ru
+Subject: Подтверждение email — Timefall
+Trace: #0 /home/a1263903/domains/timefall.ru/public_html/phpmailer/src/PHPMailer.php(2231): PHPMailer\PHPMailer\PHPMailer->smtpConnect(Array)
+#1 /home/a1263903/domains/timefall.ru/public_html/phpmailer/src/PHPMailer.php(1851): PHPMailer\PHPMailer\PHPMailer->smtpSend('Date: Wed, 20 M...', '--b1=_ByGE23aDH...')
+#2 /home/a1263903/domains/timefall.ru/public_html/phpmailer/src/PHPMailer.php(1668): PHPMailer\PHPMailer\PHPMailer->postSend()
+#3 /home/a1263903/domains/timefall.ru/public_html/api/config.php(107): PHPMailer\PHPMailer\PHPMailer->send()
+#4 /home/a1263903/domains/timefall.ru/public_html/api/register.php(74): sendEmail('crepo777@mail.r...', '\xD0\x9F\xD0\xBE\xD0\xB4\xD1\x82\xD0\xB2\xD0\xB5\xD1\x80\xD0...', '\r\n<!DOCTYPE htm...')
+#5 {main}
+
+[2026-05-25 20:29:55] Ошибка: SMTP Error: The following recipients failed: 232323232@obosrhashka.ru: "Unknown recipient"
+
+SMTP Error: SMTP Error: The following recipients failed: 232323232@obosrhashka.ru: "Unknown recipient"
+ SMTP server error: QUIT command failed
+To: 232323232@obosrhashka.ru
+Subject: Подтверждение email — Timefall
+Trace: #0 /home/a1263903/domains/timefall.ru/public_html/phpmailer/src/PHPMailer.php(1851): PHPMailer\PHPMailer\PHPMailer->smtpSend('Date: Mon, 25 M...', '--b1=_Kiyi917Oj...')
+#1 /home/a1263903/domains/timefall.ru/public_html/phpmailer/src/PHPMailer.php(1668): PHPMailer\PHPMailer\PHPMailer->postSend()
+#2 /home/a1263903/domains/timefall.ru/public_html/api/config.php(107): PHPMailer\PHPMailer\PHPMailer->send()
+#3 /home/a1263903/domains/timefall.ru/public_html/api/register.php(73): sendEmail('232323232@obosr...', '\xD0\x9F\xD0\xBE\xD0\xB4\xD1\x82\xD0\xB2\xD0\xB5\xD1\x80\xD0...', '\r\n<!DOCTYPE htm...')
+#4 {main}
+
+[2026-06-18 11:00:49] Ошибка: SMTP Error: The following recipients failed: sideriaxingyue@protonmail.com: Temporary local problem - please try later
+
+SMTP Error: SMTP Error: The following recipients failed: sideriaxingyue@protonmail.com: Temporary local problem - please try later
+
+To: sideriaxingyue@protonmail.com
+Subject: Подтверждение email — Timefall
+Trace: #0 /home/a1263903/domains/timefall.ru/public_html/phpmailer/src/PHPMailer.php(1851): PHPMailer\PHPMailer\PHPMailer->smtpSend('Date: Thu, 18 J...', '--b1=_yKFtjMYxY...')
+#1 /home/a1263903/domains/timefall.ru/public_html/phpmailer/src/PHPMailer.php(1668): PHPMailer\PHPMailer\PHPMailer->postSend()
+#2 /home/a1263903/domains/timefall.ru/public_html/api/config.php(107): PHPMailer\PHPMailer\PHPMailer->send()
+#3 /home/a1263903/domains/timefall.ru/public_html/api/register.php(73): sendEmail('sideriaxingyue@...', '\xD0\x9F\xD0\xBE\xD0\xB4\xD1\x82\xD0\xB2\xD0\xB5\xD1\x80\xD0...', '\r\n<!DOCTYPE htm...')
+#4 {main}
+
+[2026-06-18 11:00:59] Ошибка: SMTP Error: The following recipients failed: sideriaxingyue@protonmail.com: Temporary local problem - please try later
+
+SMTP Error: SMTP Error: The following recipients failed: sideriaxingyue@protonmail.com: Temporary local problem - please try later
+
+To: sideriaxingyue@protonmail.com
+Subject: Подтверждение email — Timefall
+Trace: #0 /home/a1263903/domains/timefall.ru/public_html/phpmailer/src/PHPMailer.php(1851): PHPMailer\PHPMailer\PHPMailer->smtpSend('Date: Thu, 18 J...', '--b1=_tI40kuVxh...')
+#1 /home/a1263903/domains/timefall.ru/public_html/phpmailer/src/PHPMailer.php(1668): PHPMailer\PHPMailer\PHPMailer->postSend()
+#2 /home/a1263903/domains/timefall.ru/public_html/api/config.php(107): PHPMailer\PHPMailer\PHPMailer->send()
+#3 /home/a1263903/domains/timefall.ru/public_html/api/register.php(73): sendEmail('sideriaxingyue@...', '\xD0\x9F\xD0\xBE\xD0\xB4\xD1\x82\xD0\xB2\xD0\xB5\xD1\x80\xD0...', '\r\n<!DOCTYPE htm...')
+#4 {main}
+
+[2026-06-18 11:01:10] Ошибка: SMTP Error: The following recipients failed: sideriaxingyue@protonmail.com: Temporary local problem - please try later
+
+SMTP Error: SMTP Error: The following recipients failed: sideriaxingyue@protonmail.com: Temporary local problem - please try later
+
+To: sideriaxingyue@protonmail.com
+Subject: Подтверждение email — Timefall
+Trace: #0 /home/a1263903/domains/timefall.ru/public_html/phpmailer/src/PHPMailer.php(1851): PHPMailer\PHPMailer\PHPMailer->smtpSend('Date: Thu, 18 J...', '--b1=_8HyK15gG2...')
+#1 /home/a1263903/domains/timefall.ru/public_html/phpmailer/src/PHPMailer.php(1668): PHPMailer\PHPMailer\PHPMailer->postSend()
+#2 /home/a1263903/domains/timefall.ru/public_html/api/config.php(107): PHPMailer\PHPMailer\PHPMailer->send()
+#3 /home/a1263903/domains/timefall.ru/public_html/api/register.php(73): sendEmail('sideriaxingyue@...', '\xD0\x9F\xD0\xBE\xD0\xB4\xD1\x82\xD0\xB2\xD0\xB5\xD1\x80\xD0...', '\r\n<!DOCTYPE htm...')
+#4 {main}
+
+[2026-06-18 11:01:50] Ошибка: SMTP Error: The following recipients failed: sideriaxingyue@protonmail.com: Temporary local problem - please try later
+
+SMTP Error: SMTP Error: The following recipients failed: sideriaxingyue@protonmail.com: Temporary local problem - please try later
+
+To: sideriaxingyue@protonmail.com
+Subject: Подтверждение email — Timefall
+Trace: #0 /home/a1263903/domains/timefall.ru/public_html/phpmailer/src/PHPMailer.php(1851): PHPMailer\PHPMailer\PHPMailer->smtpSend('Date: Thu, 18 J...', '--b1=_E2jYT7gjV...')
+#1 /home/a1263903/domains/timefall.ru/public_html/phpmailer/src/PHPMailer.php(1668): PHPMailer\PHPMailer\PHPMailer->postSend()
+#2 /home/a1263903/domains/timefall.ru/public_html/api/config.php(107): PHPMailer\PHPMailer\PHPMailer->send()
+#3 /home/a1263903/domains/timefall.ru/public_html/api/register.php(73): sendEmail('sideriaxingyue@...', '\xD0\x9F\xD0\xBE\xD0\xB4\xD1\x82\xD0\xB2\xD0\xB5\xD1\x80\xD0...', '\r\n<!DOCTYPE htm...')
+#4 {main}
+

@@ -1,0 +1,931 @@
+2026-07-10 16:54:42 - Webhook вызван
+POST: Array
+(
+)
+
+inv_id=, user_id=, item_type=
+ERROR: Отсутствуют параметры
+2026-07-10 16:54:55 - Webhook вызван
+POST: Array
+(
+)
+
+inv_id=, user_id=, item_type=
+ERROR: Отсутствуют параметры
+2026-07-10 16:55:30 - Webhook вызван
+POST: Array
+(
+)
+
+inv_id=, user_id=, item_type=
+ERROR: Отсутствуют параметры
+2026-07-10 16:55:42 - Webhook вызван
+POST: Array
+(
+)
+
+inv_id=, user_id=, item_type=
+ERROR: Отсутствуют параметры
+2026-07-10 16:55:56 - Webhook вызван
+POST: Array
+(
+)
+
+inv_id=, user_id=, item_type=
+ERROR: Отсутствуют параметры
+2026-07-10 16:56:30 - Webhook вызван
+POST: Array
+(
+)
+
+inv_id=, user_id=, item_type=
+ERROR: Отсутствуют параметры
+2026-07-10 16:56:56 - Webhook вызван
+POST: Array
+(
+)
+
+inv_id=, user_id=, item_type=
+ERROR: Отсутствуют параметры
+2026-07-10 16:57:31 - Webhook вызван
+POST: Array
+(
+)
+
+inv_id=, user_id=, item_type=
+ERROR: Отсутствуют параметры
+2026-07-10 16:57:57 - Webhook вызван
+POST: Array
+(
+)
+
+inv_id=, user_id=, item_type=
+ERROR: Отсутствуют параметры
+2026-07-10 16:58:31 - Webhook вызван
+POST: Array
+(
+)
+
+inv_id=, user_id=, item_type=
+ERROR: Отсутствуют параметры
+2026-07-10 17:00:19 - Webhook вызван
+POST: Array
+(
+)
+
+inv_id=, user_id=, item_type=
+ERROR: Отсутствуют параметры
+2026-07-10 17:01:19 - Webhook вызван
+POST: Array
+(
+)
+
+inv_id=, user_id=, item_type=
+ERROR: Отсутствуют параметры
+2026-07-10 17:02:20 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300
+    [OutSum] => 300
+    [inv_id] => 17836920071354
+    [InvId] => 17836920071354
+    [crc] => 22DE72E5AB64A5C6D57B7CC99196A800
+    [SignatureValue] => 22DE72E5AB64A5C6D57B7CC99196A800
+    [PaymentMethod] => PayButton
+    [IncSum] => 300
+    [IncCurrLabel] => SBPPSR
+    [IsTest] => 1
+    [EMail] => 
+    [Fee] => 0.0
+    [Shp_item_type] => pass
+    [Shp_user_id] => 1
+)
+
+inv_id=17836920071354, user_id=1, item_type=pass
+Строка для подписи: 300:17836920071354:RITU5FadwZ6j2o2x0gSJ:Shp_item_type=pass:Shp_user_id=1
+Моя подпись: 22de72e5ab64a5c6d57b7cc99196a800
+Подпись Robokassa: 22DE72E5AB64A5C6D57B7CC99196A800
+✅ Проходка выдана
+✅ Успешно! OK17836920071354
+2026-07-10 17:02:52 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300
+    [OutSum] => 300
+    [inv_id] => 17836921661289
+    [InvId] => 17836921661289
+    [crc] => A466CE0BB06AC3DBA95B55E81DA904D3
+    [SignatureValue] => A466CE0BB06AC3DBA95B55E81DA904D3
+    [PaymentMethod] => PayButton
+    [IncSum] => 300
+    [IncCurrLabel] => SBPPSR
+    [IsTest] => 1
+    [EMail] => 
+    [Fee] => 0.0
+    [Shp_item_type] => pass
+    [Shp_user_id] => 1
+)
+
+inv_id=17836921661289, user_id=1, item_type=pass
+Строка для подписи: 300:17836921661289:RITU5FadwZ6j2o2x0gSJ:Shp_item_type=pass:Shp_user_id=1
+Моя подпись: a466ce0bb06ac3dba95b55e81da904d3
+Подпись Robokassa: A466CE0BB06AC3DBA95B55E81DA904D3
+✅ Проходка выдана
+✅ Успешно! OK17836921661289
+2026-07-10 17:03:46 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 550
+    [OutSum] => 550
+    [inv_id] => 17836922181675
+    [InvId] => 17836922181675
+    [crc] => C7E06A5BE48F3F4B5AF00C73A4F7647E
+    [SignatureValue] => C7E06A5BE48F3F4B5AF00C73A4F7647E
+    [PaymentMethod] => PayButton
+    [IncSum] => 550
+    [IncCurrLabel] => SBPPSR
+    [IsTest] => 1
+    [EMail] => 
+    [Fee] => 0.0
+    [Shp_item_type] => subscription_3m
+    [Shp_user_id] => 1
+)
+
+inv_id=17836922181675, user_id=1, item_type=subscription_3m
+Строка для подписи: 550:17836922181675:RITU5FadwZ6j2o2x0gSJ:Shp_item_type=subscription_3m:Shp_user_id=1
+Моя подпись: c7e06a5be48f3f4b5af00c73a4f7647e
+Подпись Robokassa: C7E06A5BE48F3F4B5AF00C73A4F7647E
+✅ Подписка 3 месяца
+✅ Успешно! OK17836922181675
+2026-07-11 18:10:20 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1783782485120136
+    [InvId] => 1783782485120136
+    [crc] => B812BD763D14CA88E085B5839A832A69
+    [SignatureValue] => B812BD763D14CA88E085B5839A832A69
+    [PaymentMethod] => BankCard
+    [IncSum] => 300.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => pkolodyahnyy@gmail.com
+    [Fee] => 11.700000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 120
+)
+
+inv_id=1783782485120136, user_id=120, item_type=pass
+Строка для подписи: 300.000000:1783782485120136:Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=120
+Моя подпись: b812bd763d14ca88e085b5839a832a69
+Подпись Robokassa: B812BD763D14CA88E085B5839A832A69
+✅ Проходка выдана
+✅ Успешно! OK1783782485120136
+2026-07-12 00:59:38 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1783807063121747
+    [InvId] => 1783807063121747
+    [crc] => 30702138517BA66B33FD51025B4CA754
+    [SignatureValue] => 30702138517BA66B33FD51025B4CA754
+    [PaymentMethod] => BankCard
+    [IncSum] => 300.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => alan.neon95@mail.ru
+    [Fee] => 11.700000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 121
+)
+
+inv_id=1783807063121747, user_id=121, item_type=pass
+Строка для подписи: 300.000000:1783807063121747:Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=121
+Моя подпись: 30702138517ba66b33fd51025b4ca754
+Подпись Robokassa: 30702138517BA66B33FD51025B4CA754
+✅ Проходка выдана
+✅ Успешно! OK1783807063121747
+2026-07-12 13:55:53 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1783853635122823
+    [InvId] => 1783853635122823
+    [crc] => F095F04DF9E48A905703EC7668C1CEBF
+    [SignatureValue] => F095F04DF9E48A905703EC7668C1CEBF
+    [PaymentMethod] => BankCard
+    [IncSum] => 300.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => xokka.ich@gmail.com
+    [Fee] => 11.700000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 122
+)
+
+inv_id=1783853635122823, user_id=122, item_type=pass
+Строка для подписи: 300.000000:1783853635122823:Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=122
+Моя подпись: f095f04df9e48a905703ec7668c1cebf
+Подпись Robokassa: F095F04DF9E48A905703EC7668C1CEBF
+✅ Проходка выдана
+✅ Успешно! OK1783853635122823
+2026-07-12 14:01:10 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1783853931123175
+    [InvId] => 1783853931123175
+    [crc] => ABC42444BE69BFBAE7AACD42CB781E21
+    [SignatureValue] => ABC42444BE69BFBAE7AACD42CB781E21
+    [PaymentMethod] => BankCard
+    [IncSum] => 300.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => anime_kun@list.ru
+    [Fee] => 11.700000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 123
+)
+
+inv_id=1783853931123175, user_id=123, item_type=pass
+Строка для подписи: 300.000000:1783853931123175:Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=123
+Моя подпись: abc42444be69bfbae7aacd42cb781e21
+Подпись Robokassa: ABC42444BE69BFBAE7AACD42CB781E21
+✅ Проходка выдана
+✅ Успешно! OK1783853931123175
+2026-07-12 14:10:19 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 550.000000
+    [OutSum] => 550.000000
+    [inv_id] => 1783854395123255
+    [InvId] => 1783854395123255
+    [crc] => EBC4518AB3F91896B12BB05EB043DB9B
+    [SignatureValue] => EBC4518AB3F91896B12BB05EB043DB9B
+    [PaymentMethod] => BankCard
+    [IncSum] => 550.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => anime_kun@list.ru
+    [Fee] => 21.450000
+    [Shp_item_type] => subscription_3m
+    [Shp_user_id] => 123
+)
+
+inv_id=1783854395123255, user_id=123, item_type=subscription_3m
+Строка для подписи: 550.000000:1783854395123255:Hiib24RmH31W4FRkwUXQ:Shp_item_type=subscription_3m:Shp_user_id=123
+Моя подпись: ebc4518ab3f91896b12bb05eb043db9b
+Подпись Robokassa: EBC4518AB3F91896B12BB05EB043DB9B
+✅ Подписка 3 месяца
+✅ Успешно! OK1783854395123255
+2026-07-12 14:20:19 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1783854964124256
+    [InvId] => 1783854964124256
+    [crc] => A945FE22855E2E08BEC3853B3A2EAB3A
+    [SignatureValue] => A945FE22855E2E08BEC3853B3A2EAB3A
+    [PaymentMethod] => BankCard
+    [IncSum] => 300.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => hazievalbert47@gmail.com
+    [Fee] => 11.700000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 124
+)
+
+inv_id=1783854964124256, user_id=124, item_type=pass
+Строка для подписи: 300.000000:1783854964124256:Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=124
+Моя подпись: a945fe22855e2e08bec3853b3a2eab3a
+Подпись Robokassa: A945FE22855E2E08BEC3853B3A2EAB3A
+✅ Проходка выдана
+✅ Успешно! OK1783854964124256
+2026-07-12 14:56:08 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 550.000000
+    [OutSum] => 550.000000
+    [inv_id] => 1783857251121863
+    [InvId] => 1783857251121863
+    [crc] => 06392F10CD37C9170A79F5656687955C
+    [SignatureValue] => 06392F10CD37C9170A79F5656687955C
+    [PaymentMethod] => BankCard
+    [IncSum] => 550.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => alan.neon98@gmail.com
+    [Fee] => 21.450000
+    [Shp_item_type] => subscription_3m
+    [Shp_user_id] => 121
+)
+
+inv_id=1783857251121863, user_id=121, item_type=subscription_3m
+Строка для подписи: 550.000000:1783857251121863:Hiib24RmH31W4FRkwUXQ:Shp_item_type=subscription_3m:Shp_user_id=121
+Моя подпись: 06392f10cd37c9170a79f5656687955c
+Подпись Robokassa: 06392F10CD37C9170A79F5656687955C
+✅ Подписка 3 месяца
+✅ Успешно! OK1783857251121863
+2026-07-12 15:38:36 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1783859753126101
+    [InvId] => 1783859753126101
+    [crc] => CA6A4DE695EDCAE3C3AF22C4C9370717
+    [SignatureValue] => CA6A4DE695EDCAE3C3AF22C4C9370717
+    [PaymentMethod] => BankCard
+    [IncSum] => 300.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => liker.commeric@gmail.com
+    [Fee] => 11.700000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 126
+)
+
+inv_id=1783859753126101, user_id=126, item_type=pass
+Строка для подписи: 300.000000:1783859753126101:Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=126
+Моя подпись: ca6a4de695edcae3c3af22c4c9370717
+Подпись Robokassa: CA6A4DE695EDCAE3C3AF22C4C9370717
+✅ Проходка выдана
+✅ Успешно! OK1783859753126101
+2026-07-12 17:10:23 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1783857774125900
+    [InvId] => 1783857774125900
+    [crc] => 301728474361A1C34668A65671926678
+    [SignatureValue] => 301728474361A1C34668A65671926678
+    [PaymentMethod] => BankCard
+    [IncSum] => 300.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => zaharmyshkovec@gmail.com
+    [Fee] => 11.700000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 125
+)
+
+inv_id=1783857774125900, user_id=125, item_type=pass
+ERROR: Отсутствуют параметры
+2026-07-12 17:11:23 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1783857774125900
+    [InvId] => 1783857774125900
+    [crc] => 301728474361A1C34668A65671926678
+    [SignatureValue] => 301728474361A1C34668A65671926678
+    [PaymentMethod] => BankCard
+    [IncSum] => 300.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => zaharmyshkovec@gmail.com
+    [Fee] => 11.700000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 125
+)
+
+inv_id=1783857774125900, user_id=125, item_type=pass
+ERROR: Отсутствуют параметры
+2026-07-12 17:12:24 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1783857774125900
+    [InvId] => 1783857774125900
+    [crc] => 301728474361A1C34668A65671926678
+    [SignatureValue] => 301728474361A1C34668A65671926678
+    [PaymentMethod] => BankCard
+    [IncSum] => 300.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => zaharmyshkovec@gmail.com
+    [Fee] => 11.700000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 125
+)
+
+inv_id=1783857774125900, user_id=125, item_type=pass
+ERROR: Отсутствуют параметры
+2026-07-12 17:13:24 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1783857774125900
+    [InvId] => 1783857774125900
+    [crc] => 301728474361A1C34668A65671926678
+    [SignatureValue] => 301728474361A1C34668A65671926678
+    [PaymentMethod] => BankCard
+    [IncSum] => 300.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => zaharmyshkovec@gmail.com
+    [Fee] => 11.700000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 125
+)
+
+inv_id=1783857774125900, user_id=125, item_type=pass
+ERROR: Отсутствуют параметры
+2026-07-12 17:59:34 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1783867960127885
+    [InvId] => 1783867960127885
+    [crc] => F3D87ACB73EF9A07E401685ACC67F23A
+    [SignatureValue] => F3D87ACB73EF9A07E401685ACC67F23A
+    [PaymentMethod] => BankCard
+    [IncSum] => 300.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => mechnikov.b@gmail.com
+    [Fee] => 11.700000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 127
+)
+
+inv_id=1783867960127885, user_id=127, item_type=pass
+ERROR: Отсутствуют параметры
+2026-07-12 18:00:35 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1783867960127885
+    [InvId] => 1783867960127885
+    [crc] => F3D87ACB73EF9A07E401685ACC67F23A
+    [SignatureValue] => F3D87ACB73EF9A07E401685ACC67F23A
+    [PaymentMethod] => BankCard
+    [IncSum] => 300.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => mechnikov.b@gmail.com
+    [Fee] => 11.700000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 127
+)
+
+inv_id=1783867960127885, user_id=127, item_type=pass
+ERROR: Отсутствуют параметры
+2026-07-12 18:01:35 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1783867960127885
+    [InvId] => 1783867960127885
+    [crc] => F3D87ACB73EF9A07E401685ACC67F23A
+    [SignatureValue] => F3D87ACB73EF9A07E401685ACC67F23A
+    [PaymentMethod] => BankCard
+    [IncSum] => 300.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => mechnikov.b@gmail.com
+    [Fee] => 11.700000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 127
+)
+
+inv_id=1783867960127885, user_id=127, item_type=pass
+ERROR: Отсутствуют параметры
+2026-07-12 18:02:36 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1783867960127885
+    [InvId] => 1783867960127885
+    [crc] => F3D87ACB73EF9A07E401685ACC67F23A
+    [SignatureValue] => F3D87ACB73EF9A07E401685ACC67F23A
+    [PaymentMethod] => BankCard
+    [IncSum] => 300.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => mechnikov.b@gmail.com
+    [Fee] => 11.700000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 127
+)
+
+inv_id=1783867960127885, user_id=127, item_type=pass
+ERROR: Отсутствуют параметры
+2026-07-12 21:08:58 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 178387955757494
+    [InvId] => 178387955757494
+    [crc] => B1A3B84B4F3C015A5D8D4795BF5EB693
+    [SignatureValue] => B1A3B84B4F3C015A5D8D4795BF5EB693
+    [PaymentMethod] => BankCard
+    [IncSum] => 300.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => liker.commeric@gmail.com
+    [Fee] => 11.700000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 57
+)
+
+inv_id=178387955757494, user_id=57, item_type=pass
+Строка без Receipt: 300.000000:178387955757494:Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=57
+Подпись без Receipt: b1a3b84b4f3c015a5d8d4795bf5eb693
+Строка с Receipt: 300.000000:178387955757494::Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=57
+Подпись с Receipt: abc77c6cf213b1a9e223772037a088f4
+Подпись Robokassa: B1A3B84B4F3C015A5D8D4795BF5EB693
+✅ Подпись совпадает (без Receipt)
+Начинаем обновление БД для user_id=57, item_type=pass
+Найден пользователь 57, текущий has_pass = 0
+✅ Проходка выдана пользователю 57
+После обновления has_pass = 1
+✅ Успешно! OK178387955757494
+2026-07-12 21:36:21 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1783881301129905
+    [InvId] => 1783881301129905
+    [crc] => E75F3264D7CDD414EA63D6920971299F
+    [SignatureValue] => E75F3264D7CDD414EA63D6920971299F
+    [PaymentMethod] => BankCard
+    [IncSum] => 300.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => xokka.ich@gmail.com
+    [Fee] => 11.700000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 129
+)
+
+inv_id=1783881301129905, user_id=129, item_type=pass
+Строка без Receipt: 300.000000:1783881301129905:Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=129
+Подпись без Receipt: e75f3264d7cdd414ea63d6920971299f
+Строка с Receipt: 300.000000:1783881301129905::Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=129
+Подпись с Receipt: b81f7d7876f8ccf5a69cb982f5f77267
+Подпись Robokassa: E75F3264D7CDD414EA63D6920971299F
+✅ Подпись совпадает (без Receipt)
+Начинаем обновление БД для user_id=129, item_type=pass
+Найден пользователь 129, текущий has_pass = 0
+✅ Проходка выдана пользователю 129
+После обновления has_pass = 1
+✅ Успешно! OK1783881301129905
+2026-07-13 22:15:59 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 1000.000000
+    [OutSum] => 1000.000000
+    [inv_id] => 1783970104122895
+    [InvId] => 1783970104122895
+    [crc] => 8DB11176CE612121AEE23E2D30C6796E
+    [SignatureValue] => 8DB11176CE612121AEE23E2D30C6796E
+    [PaymentMethod] => BankCard
+    [IncSum] => 1000.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => xokka.ich@gmail.com
+    [Fee] => 39.000000
+    [Shp_item_type] => unban
+    [Shp_user_id] => 122
+)
+
+inv_id=1783970104122895, user_id=122, item_type=unban
+Строка без Receipt: 1000.000000:1783970104122895:Hiib24RmH31W4FRkwUXQ:Shp_item_type=unban:Shp_user_id=122
+Подпись без Receipt: 8db11176ce612121aee23e2d30c6796e
+Строка с Receipt: 1000.000000:1783970104122895::Hiib24RmH31W4FRkwUXQ:Shp_item_type=unban:Shp_user_id=122
+Подпись с Receipt: ac49e5c92f725d7665fb662d8beb0413
+Подпись Robokassa: 8DB11176CE612121AEE23E2D30C6796E
+✅ Подпись совпадает (без Receipt)
+Начинаем обновление БД для user_id=122, item_type=unban
+Найден пользователь 122, текущий has_pass = 1
+✅ Разбан выполнен для пользователя 122
+После обновления has_pass = 1
+✅ Успешно! OK1783970104122895
+2026-07-13 22:18:39 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 1000.000000
+    [OutSum] => 1000.000000
+    [inv_id] => 1783970124125777
+    [InvId] => 1783970124125777
+    [crc] => 35DDB5B8AAF7ED0FCC42DBF6CD9C2948
+    [SignatureValue] => 35DDB5B8AAF7ED0FCC42DBF6CD9C2948
+    [PaymentMethod] => BankCard
+    [IncSum] => 1000.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => zaharmyshkovec@gmail.com
+    [Fee] => 39.000000
+    [Shp_item_type] => unban
+    [Shp_user_id] => 125
+)
+
+inv_id=1783970124125777, user_id=125, item_type=unban
+Строка без Receipt: 1000.000000:1783970124125777:Hiib24RmH31W4FRkwUXQ:Shp_item_type=unban:Shp_user_id=125
+Подпись без Receipt: 35ddb5b8aaf7ed0fcc42dbf6cd9c2948
+Строка с Receipt: 1000.000000:1783970124125777::Hiib24RmH31W4FRkwUXQ:Shp_item_type=unban:Shp_user_id=125
+Подпись с Receipt: 0d9bf41c94d9897ae8c8248f77cb946f
+Подпись Robokassa: 35DDB5B8AAF7ED0FCC42DBF6CD9C2948
+✅ Подпись совпадает (без Receipt)
+Начинаем обновление БД для user_id=125, item_type=unban
+Найден пользователь 125, текущий has_pass = 1
+✅ Разбан выполнен для пользователя 125
+После обновления has_pass = 1
+✅ Успешно! OK1783970124125777
+2026-07-14 14:02:37 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1784026871131778
+    [InvId] => 1784026871131778
+    [crc] => 747DB3C94635B5B03451C43A44CCF15B
+    [SignatureValue] => 747DB3C94635B5B03451C43A44CCF15B
+    [PaymentMethod] => BankCard
+    [IncSum] => 300.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => liker.commeric@gmail.com
+    [Fee] => 11.700000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 131
+)
+
+inv_id=1784026871131778, user_id=131, item_type=pass
+Строка без Receipt: 300.000000:1784026871131778:Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=131
+Подпись без Receipt: 747db3c94635b5b03451c43a44ccf15b
+Строка с Receipt: 300.000000:1784026871131778::Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=131
+Подпись с Receipt: 5452b2bfed61eef6d88d3a300a314dbd
+Подпись Robokassa: 747DB3C94635B5B03451C43A44CCF15B
+✅ Подпись совпадает (без Receipt)
+Начинаем обновление БД для user_id=131, item_type=pass
+Найден пользователь 131, текущий has_pass = 0
+✅ Проходка выдана пользователю 131
+После обновления has_pass = 1
+✅ Успешно! OK1784026871131778
+2026-07-15 10:55:32 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 200.000000
+    [OutSum] => 200.000000
+    [inv_id] => 1784101997126473
+    [InvId] => 1784101997126473
+    [crc] => A9E54E28D10CDCA9CA7DBB483B422EAD
+    [SignatureValue] => A9E54E28D10CDCA9CA7DBB483B422EAD
+    [PaymentMethod] => BankCard
+    [IncSum] => 200.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => liker.commeric@gmail.com
+    [Fee] => 7.800000
+    [Shp_item_type] => subscription_1m
+    [Shp_user_id] => 126
+)
+
+inv_id=1784101997126473, user_id=126, item_type=subscription_1m
+Строка без Receipt: 200.000000:1784101997126473:Hiib24RmH31W4FRkwUXQ:Shp_item_type=subscription_1m:Shp_user_id=126
+Подпись без Receipt: a9e54e28d10cdca9ca7dbb483b422ead
+Строка с Receipt: 200.000000:1784101997126473::Hiib24RmH31W4FRkwUXQ:Shp_item_type=subscription_1m:Shp_user_id=126
+Подпись с Receipt: 322db9e7995d7217a3263891b0b5ebc9
+Подпись Robokassa: A9E54E28D10CDCA9CA7DBB483B422EAD
+✅ Подпись совпадает (без Receipt)
+Начинаем обновление БД для user_id=126, item_type=subscription_1m
+Найден пользователь 126, текущий has_pass = 1
+✅ Подписка 1 месяц выдана пользователю 126
+После обновления has_pass = 1
+✅ Успешно! OK1784101997126473
+2026-07-16 22:59:00 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1784231839133140
+    [InvId] => 1784231839133140
+    [crc] => 7C40F028846A42DA98D5E75D4321540A
+    [SignatureValue] => 7C40F028846A42DA98D5E75D4321540A
+    [PaymentMethod] => BankCard
+    [IncSum] => 300.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => alan.neon95@mail.ru
+    [Fee] => 11.700000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 133
+)
+
+inv_id=1784231839133140, user_id=133, item_type=pass
+Строка без Receipt: 300.000000:1784231839133140:Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=133
+Подпись без Receipt: 7c40f028846a42da98d5e75d4321540a
+Строка с Receipt: 300.000000:1784231839133140::Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=133
+Подпись с Receipt: 4030d0c1db89850c9b7f78cb4e6f7848
+Подпись Robokassa: 7C40F028846A42DA98D5E75D4321540A
+✅ Подпись совпадает (без Receipt)
+Начинаем обновление БД для user_id=133, item_type=pass
+Найден пользователь 133, текущий has_pass = 0
+✅ Проходка выдана пользователю 133
+После обновления has_pass = 1
+✅ Успешно! OK1784231839133140
+2026-07-17 21:01:01 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1784309017134225
+    [InvId] => 1784309017134225
+    [crc] => B3F382734812F8ED6825144D71FDFA46
+    [SignatureValue] => B3F382734812F8ED6825144D71FDFA46
+    [PaymentMethod] => PayButton
+    [IncSum] => 300.000000
+    [IncCurrLabel] => SBPPSR
+    [EMail] => octaviagoetti@gmail.com
+    [Fee] => 10.500000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 134
+)
+
+inv_id=1784309017134225, user_id=134, item_type=pass
+Строка без Receipt: 300.000000:1784309017134225:Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=134
+Подпись без Receipt: b3f382734812f8ed6825144d71fdfa46
+Строка с Receipt: 300.000000:1784309017134225::Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=134
+Подпись с Receipt: 2e3fd17b6454c4447ac62d725f82d832
+Подпись Robokassa: B3F382734812F8ED6825144D71FDFA46
+✅ Подпись совпадает (без Receipt)
+Начинаем обновление БД для user_id=134, item_type=pass
+Найден пользователь 134, текущий has_pass = 0
+✅ Проходка выдана пользователю 134
+После обновления has_pass = 1
+✅ Успешно! OK1784309017134225
+2026-07-21 17:52:47 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1784645456136964
+    [InvId] => 1784645456136964
+    [crc] => A7A6694DCECDB7DED41C0099B3D1C44F
+    [SignatureValue] => A7A6694DCECDB7DED41C0099B3D1C44F
+    [PaymentMethod] => PayButton
+    [IncSum] => 300.000000
+    [IncCurrLabel] => SBPPSR
+    [EMail] => void5823@gmail.com
+    [Fee] => 10.500000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 136
+)
+
+inv_id=1784645456136964, user_id=136, item_type=pass
+Строка без Receipt: 300.000000:1784645456136964:Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=136
+Подпись без Receipt: a7a6694dcecdb7ded41c0099b3d1c44f
+Строка с Receipt: 300.000000:1784645456136964::Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=136
+Подпись с Receipt: 84c2022fc29f21828d52738c7f3582eb
+Подпись Robokassa: A7A6694DCECDB7DED41C0099B3D1C44F
+✅ Подпись совпадает (без Receipt)
+Начинаем обновление БД для user_id=136, item_type=pass
+Найден пользователь 136, текущий has_pass = 0
+✅ Проходка выдана пользователю 136
+После обновления has_pass = 1
+✅ Успешно! OK1784645456136964
+2026-07-21 19:49:01 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1784652487137928
+    [InvId] => 1784652487137928
+    [crc] => DE7CE692954F373F4C30C5B015332D1E
+    [SignatureValue] => DE7CE692954F373F4C30C5B015332D1E
+    [PaymentMethod] => PayButton
+    [IncSum] => 300.000000
+    [IncCurrLabel] => SBPPSR
+    [EMail] => stepanmarcenko23@gmail.com
+    [Fee] => 10.500000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 137
+)
+
+inv_id=1784652487137928, user_id=137, item_type=pass
+Строка без Receipt: 300.000000:1784652487137928:Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=137
+Подпись без Receipt: de7ce692954f373f4c30c5b015332d1e
+Строка с Receipt: 300.000000:1784652487137928::Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=137
+Подпись с Receipt: 69b53827d731869c7541215543edd93e
+Подпись Robokassa: DE7CE692954F373F4C30C5B015332D1E
+✅ Подпись совпадает (без Receipt)
+Начинаем обновление БД для user_id=137, item_type=pass
+Найден пользователь 137, текущий has_pass = 0
+✅ Проходка выдана пользователю 137
+После обновления has_pass = 1
+✅ Успешно! OK1784652487137928
+2026-07-21 21:36:28 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1784658899138902
+    [InvId] => 1784658899138902
+    [crc] => E39CFC1C14AD37FFCA95230C6AD7E788
+    [SignatureValue] => E39CFC1C14AD37FFCA95230C6AD7E788
+    [PaymentMethod] => PayButton
+    [IncSum] => 300.000000
+    [IncCurrLabel] => SBPPSR
+    [EMail] => antoshina_2016@mail.ru
+    [Fee] => 10.500000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 138
+)
+
+inv_id=1784658899138902, user_id=138, item_type=pass
+Строка без Receipt: 300.000000:1784658899138902:Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=138
+Подпись без Receipt: e39cfc1c14ad37ffca95230c6ad7e788
+Строка с Receipt: 300.000000:1784658899138902::Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=138
+Подпись с Receipt: a7f14071d5b9d44c35fa4320e3f28d1d
+Подпись Robokassa: E39CFC1C14AD37FFCA95230C6AD7E788
+✅ Подпись совпадает (без Receipt)
+Начинаем обновление БД для user_id=138, item_type=pass
+Найден пользователь 138, текущий has_pass = 0
+✅ Проходка выдана пользователю 138
+После обновления has_pass = 1
+✅ Успешно! OK1784658899138902
+2026-07-21 23:45:39 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1784666550135152
+    [InvId] => 1784666550135152
+    [crc] => 339CC0EFFE46F4BC86ACCBCA064F552A
+    [SignatureValue] => 339CC0EFFE46F4BC86ACCBCA064F552A
+    [PaymentMethod] => BankCard
+    [IncSum] => 300.000000
+    [IncCurrLabel] => BankCardPSR
+    [EMail] => sevaslychkov@gmail.com
+    [Fee] => 11.700000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 135
+)
+
+inv_id=1784666550135152, user_id=135, item_type=pass
+Строка без Receipt: 300.000000:1784666550135152:Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=135
+Подпись без Receipt: 339cc0effe46f4bc86accbca064f552a
+Строка с Receipt: 300.000000:1784666550135152::Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=135
+Подпись с Receipt: e9979411347d3b451773aa05fb96547e
+Подпись Robokassa: 339CC0EFFE46F4BC86ACCBCA064F552A
+✅ Подпись совпадает (без Receipt)
+Начинаем обновление БД для user_id=135, item_type=pass
+Найден пользователь 135, текущий has_pass = 0
+✅ Проходка выдана пользователю 135
+После обновления has_pass = 1
+✅ Успешно! OK1784666550135152
+2026-07-24 10:37:46 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1784878465140776
+    [InvId] => 1784878465140776
+    [crc] => 0129995F543F32C03580ACD9CB4CDBD4
+    [SignatureValue] => 0129995F543F32C03580ACD9CB4CDBD4
+    [PaymentMethod] => PayButton
+    [IncSum] => 300.000000
+    [IncCurrLabel] => SBPPSR
+    [EMail] => manedd.gamer@yandex.ru
+    [Fee] => 10.500000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 140
+)
+
+inv_id=1784878465140776, user_id=140, item_type=pass
+Строка без Receipt: 300.000000:1784878465140776:Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=140
+Подпись без Receipt: 0129995f543f32c03580acd9cb4cdbd4
+Строка с Receipt: 300.000000:1784878465140776::Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=140
+Подпись с Receipt: d2ef9d4f21398e197cd918d7b90206da
+Подпись Robokassa: 0129995F543F32C03580ACD9CB4CDBD4
+✅ Подпись совпадает (без Receipt)
+Начинаем обновление БД для user_id=140, item_type=pass
+Найден пользователь 140, текущий has_pass = 0
+✅ Проходка выдана пользователю 140
+После обновления has_pass = 1
+✅ Успешно! OK1784878465140776
+2026-07-29 15:45:12 - Webhook вызван
+POST: Array
+(
+    [out_summ] => 300.000000
+    [OutSum] => 300.000000
+    [inv_id] => 1785329048141712
+    [InvId] => 1785329048141712
+    [crc] => ED71FA6436413F8F53E3A22F5BAE0908
+    [SignatureValue] => ED71FA6436413F8F53E3A22F5BAE0908
+    [PaymentMethod] => PayButton
+    [IncSum] => 300.000000
+    [IncCurrLabel] => SBPPSR
+    [EMail] => y.petrun@bk.ru
+    [Fee] => 10.500000
+    [Shp_item_type] => pass
+    [Shp_user_id] => 141
+)
+
+inv_id=1785329048141712, user_id=141, item_type=pass
+Строка без Receipt: 300.000000:1785329048141712:Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=141
+Подпись без Receipt: ed71fa6436413f8f53e3a22f5bae0908
+Строка с Receipt: 300.000000:1785329048141712::Hiib24RmH31W4FRkwUXQ:Shp_item_type=pass:Shp_user_id=141
+Подпись с Receipt: 490093fc06d4c846054ffb6dd5eb4460
+Подпись Robokassa: ED71FA6436413F8F53E3A22F5BAE0908
+✅ Подпись совпадает (без Receipt)
+Начинаем обновление БД для user_id=141, item_type=pass
+Найден пользователь 141, текущий has_pass = 0
+✅ Проходка выдана пользователю 141
+После обновления has_pass = 1
+✅ Успешно! OK1785329048141712
