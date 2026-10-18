@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# 1. Убираем www — редирект на без-www
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301,NE]
+
+# 2. HTTP → HTTPS (если без www уже, но не https)
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
